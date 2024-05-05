@@ -1,7 +1,10 @@
 ---
 title: "Analysing health parameters on a young adult"
 author: "David Ortego Casado"
-format: html
+format: pdf
+toc: true
+    number-sections: true
+    colorlinks: true
 page-layout: article
 editor: visual
 ---
@@ -26,7 +29,7 @@ file.choose()
 
 # We will call raw_data the file location that we got from file.choose(), we add everything we see in the console after using the function, this path will be different than the path I use. 
 
-raw_data <- "D:\\OneDrive - UAM\\Escritorio\\Data analysis\\R documents\\Proyecto analisis estadistico mis parametros de salud\\analisis datos mios con R.xlsx"
+raw_data <- "D:\\OneDrive - UAM\\Escritorio\\Data analysis\\R documents\\Proyecto analisis estadistico mis parametros de salud\\Health_analysis\\Quarto_refort_definitive\\Health_parameters.xlsx"
 
 first_data <- read_excel(raw_data)
 first_data 
