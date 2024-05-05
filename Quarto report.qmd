@@ -10,6 +10,8 @@ Objective:
 
 The goal of this project is to do a comparison between the parameters of one young adult that exercises four times a week versus the average parameters of a healthy young adult.
 
+Material and methods
+
 ## Running Code
 
 ```{r echo= TRUE, message=FALSE, warning= FALSE}
