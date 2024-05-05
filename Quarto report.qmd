@@ -15,6 +15,10 @@ The goal of this project is to do a comparison between some health parameters (s
 
 Material and methods:
 
+This project was the result of considering how I could improve my R programming skilsl as well as practising some basic statistics, the solution was to practise with a dataset, so I created my own dataset by measuring some health parameters that could easily be measured at home, I took a total of 16 observations of my blood pressure , my heart rate (although this variable was not used int he analysis) and my weight.
+
+After having all the measures, the data was processed and later analysed. After the analysis was done , a report was made with Quarto and the results of the project were shared in Github.
+
 To verify the reference values of blood pressure the website <https://www.cdc.gov/bloodpressure/about.htm> was used. The reference values of pulse rate were obtained from the website <https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate> and to see whats the ideal weight, the calculator from the website <https://www.calculators.org/health/ideal-weight.php> was used. The analysis was done in R and RStudio.
 
 ## Running Code
@@ -400,3 +404,5 @@ p_value_weight
 
 # Since the p-value is higher than alpha , we fail to reject H0, again there is not enough evidence that shows a difference between the weight of a person that  is 182 cm and works out 4 times a week and the reference ideal value of a person of that height. 
 ```
+
+## Bibliography
