@@ -8,19 +8,11 @@ editor: visual
 
 Objective:
 
-The goal of this project is to do a comparison between the parameters of one young adult that exercises four times a week versus the average parameters of a healthy young adult.
+The goal of this project is to do a comparison between some health parameters (systolic pressure, diastolic pressure and weight) of one young adult that exercises four times a week versus the average parameters of a healthy young adult to practice how to programe in R as well as to practice some statistical concepts.
 
-Material and methods
+Material and methods:
 
-In order to see whats the ideal weight the calculator from the website <https://www.calculators.org/health/ideal-weight.php> was used.
-
-To verify what are the reference values for a healthy person, to verify the reference values of blood pressure the website <https://www.cdc.gov/bloodpressure/about.htm> was used. 
-
-To properly measure the BP the guidelines on the website <https://www.cdc.gov/bloodpressure/measure.htm> were followed.
-
-The reference values of pulse rate were obtained from the website <https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate>.
-
-In order to make the analysis, R and RStudio were used.
+To verify the reference values of blood pressure the website <https://www.cdc.gov/bloodpressure/about.htm> was used. The reference values of pulse rate were obtained from the website <https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate> and to see whats the ideal weight, the calculator from the website <https://www.calculators.org/health/ideal-weight.php> was used. The analysis was done in R and RStudio.
 
 ## Running Code
 
@@ -28,6 +20,8 @@ In order to make the analysis, R and RStudio were used.
 #Loading our dataset
 library(readxl)
 library(tidyverse)
+#Selecting the Excel file that contains our data-----------------------------------
+
 file.choose()
 
 raw_data <- "D:\\OneDrive - UAM\\Escritorio\\Data analysis\\R documents\\Proyecto analisis estadistico mis parametros de salud\\analisis datos mios con R.xlsx"
@@ -45,7 +39,6 @@ third_data <- second_data %>%
 third_data
 
 # Plotting Systolic pressure------------------------------------------------------- 
-
 ps_graph <- third_data %>% 
  ggplot(aes(x= hora,
             y=ps))
@@ -62,8 +55,7 @@ ps_graph+
  theme(axis.text.x= element_text( size= "6"))
 
 # Statistical inference of systolic pressure (ps) ---------------------------------
-# Ho= 120 
-# H1 is different than 120
+
 
 mean_ps <- mean(third_data$ps)
 mean_ps
@@ -76,8 +68,10 @@ standard_deviation_ps
 population_ps_mean <- 120
 
 # Since we have a small sample size, only 16 observations and we dont know the population standard deviation we are on a t-student distribution.
-# First hypothesis:   H0; mean_ps=population_ps_mean
-#                    H1; mean_ps is different than population_ps_mean
+
+# First hypothesis-----------------------------------------------------------------
+#         H0; mean_ps=population_ps_mean
+#         H1; mean_ps is different than population_ps_mean
 
 # 1. Calculating 95% Confidence interval (CI) -------------------------------------
 # 
