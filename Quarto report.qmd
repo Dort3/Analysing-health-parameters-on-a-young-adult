@@ -24,7 +24,8 @@ library(tidyverse)
 
 file.choose()
 
-raw_data <- "D:\\OneDrive - UAM\\Escritorio\\Data analysis\\R documents\\Proyecto analisis estadistico mis parametros de salud\\analisis datos mios con R.xlsx"
+# We will call raw_data the file location that we got from file.choose(), we add everything we see in the console after using the function.
+raw_data <- " Excel file location"
 first_data <- read_excel(raw_data)
 first_data 
 
