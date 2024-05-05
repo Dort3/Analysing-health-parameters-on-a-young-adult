@@ -3,15 +3,15 @@ title: "Analysing health parameters on a young adult"
 author: "David Ortego Casado"
 format: pdf
 toc: true
-    number-sections: true
-    colorlinks: true
+number-sections: true
+colorlinks: true
 page-layout: article
 editor: visual
 ---
 
 Objective:
 
-The goal of this project is to do a comparison between some health parameters (systolic pressure, diastolic pressure and weight) of one young adult that exercises four times a week versus the average parameters of a healthy young adult to practice how to programe in R as well as to practice some statistical concepts.
+The goal of this project is to do a comparison between some health parameters (systolic pressure, diastolic pressure and weight) of one young adult that exercises four times a week versus the average parameters of a healthy young adult to practise how to program in R as well as to practise some statistical concepts.
 
 Material and methods:
 
