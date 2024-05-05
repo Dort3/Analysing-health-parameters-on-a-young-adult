@@ -12,6 +12,16 @@ The goal of this project is to do a comparison between the parameters of one you
 
 Material and methods
 
+In order to see whats the ideal weight the calculator from the website <https://www.calculators.org/health/ideal-weight.php> was used.
+
+To verify what are the reference values for a healthy person, to verify the reference values of blood pressure the website <https://www.cdc.gov/bloodpressure/about.htm> was used. 
+
+To properly measure the BP the guidelines on the website <https://www.cdc.gov/bloodpressure/measure.htm> were followed.
+
+The reference values of pulse rate were obtained from the website <https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate>.
+
+In order to make the analysis, R and RStudio were used.
+
 ## Running Code
 
 ```{r echo= TRUE, message=FALSE, warning= FALSE}
