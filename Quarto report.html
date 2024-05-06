@@ -72,10 +72,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#running-code" id="toc-running-code" class="nav-link active" data-scroll-target="#running-code"><span class="header-section-number">1</span> Running Code</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography"><span class="header-section-number">2</span> Bibliography</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -104,11 +113,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Objective:</p>
-<p>The goal of this project is to do a comparison between some health parameters (systolic pressure, diastolic pressure and weight) of one young adult that exercises four times a week versus the average parameters of a healthy young adult to practice how to programe in R as well as to practice some statistical concepts.</p>
+<p>The goal of this project is to do a comparison between some health parameters (systolic pressure, diastolic pressure and weight) of one young adult that exercises four times a week versus the average parameters of a healthy young adult to practise how to program in R as well as to practise some statistical concepts.</p>
 <p>Material and methods:</p>
-<p>To verify the reference values of blood pressure the website <a href="https://www.cdc.gov/bloodpressure/about.htm" class="uri">https://www.cdc.gov/bloodpressure/about.htm</a> was used.&nbsp;The reference values of pulse rate were obtained from the website <a href="https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate" class="uri">https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate</a> and to see whats the ideal weight, the calculator from the website <a href="https://www.calculators.org/health/ideal-weight.php" class="uri">https://www.calculators.org/health/ideal-weight.php</a> was used. The analysis was done in R and RStudio.</p>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
+<p>This project was the result of considering how I could improve my R programming skils as well as practising some basic statistics, the solution was to practise with a dataset, so I created my own dataset by measuring some health parameters that could easily be measured at home, I took a total of 16 observations of my blood pressure , my heart rate (although this variable was not used in the analysis) and my weight.</p>
+<p>After having all the measures, the data was processed and later analysed. After the analysis was done , a report was made with Quarto and the results of the project were shared in Github.</p>
+<p>To verify the reference values of blood pressure the website <a href="https://www.cdc.gov/bloodpressure/about.htm" class="uri">https://www.cdc.gov/bloodpressure/about.htm</a> was used.&nbsp;The reference values of pulse rate were obtained from the website <a href="https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate" class="uri">https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate</a> and to see what is the ideal weight, the calculator from the website <a href="https://www.calculators.org/health/ideal-weight.php" class="uri">https://www.calculators.org/health/ideal-weight.php</a> was used. The analysis was done in R and RStudio.</p>
+<section id="running-code" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="running-code"><span class="header-section-number">1</span> Running Code</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Loading our dataset</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
@@ -119,9 +130,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "D:\\OneDrive - UAM\\Escritorio\\Data analysis\\R documents\\Proyecto analisis estadistico mis parametros de salud\\Health_analysis\\Quarto_refort_definitive\\Quarto report.qmd"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We will call raw_data the file location that we got from file.choose(), we add everything we see in the console after using the function, this path will be different than the path I use. </span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We will call raw_data the file location that we got from file.choose(), we add  everything we see in the console after using the function, this path will be different than the path I use. </span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> <span class="st">"D:</span><span class="sc">\\</span><span class="st">OneDrive - UAM</span><span class="sc">\\</span><span class="st">Escritorio</span><span class="sc">\\</span><span class="st">Data analysis</span><span class="sc">\\</span><span class="st">R documents</span><span class="sc">\\</span><span class="st">Proyecto analisis estadistico mis parametros de salud</span><span class="sc">\\</span><span class="st">analisis datos mios con R.xlsx"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> <span class="st">"D:</span><span class="sc">\\</span><span class="st">OneDrive - UAM</span><span class="sc">\\</span><span class="st">Escritorio</span><span class="sc">\\</span><span class="st">Data analysis</span><span class="sc">\\</span><span class="st">R documents</span><span class="sc">\\</span><span class="st">Proyecto analisis estadistico mis parametros de salud</span><span class="sc">\\</span><span class="st">Health_analysis</span><span class="sc">\\</span><span class="st">Quarto_refort_definitive</span><span class="sc">\\</span><span class="st">Health_parameters.xlsx"</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>first_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(raw_data)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>first_data </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -279,34 +290,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 105.9862 113.1388</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since the CI does not inclue the H0 value, we can reject H0 and accept H1 , </span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the systolic pressure of this young adult that works out 4 times a week is different than the reference value of a healthy young adult.</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Method of the rejection area -------------------------------------------------</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># we have to calculate the pivot value: </span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>pivot <span class="ot">&lt;-</span>  (mean_ps<span class="sc">-</span>population_ps_mean)<span class="sc">/</span>(standard_deviation_ps<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>pivot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since the CI does not inclue the H0 value, we can reject H0 and accept H1, the systolic pressure of this young adult that works out 4 times a week is #different than the reference value of a healthy young adult.</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Method of the rejection area -------------------------------------------------</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># we have to calculate the pivot value: </span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>pivot <span class="ot">&lt;-</span>  (mean_ps<span class="sc">-</span>population_ps_mean)<span class="sc">/</span>(standard_deviation_ps<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>pivot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -6.219405</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Delimiting rejection zone: </span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Since we did a bilateral significance test, we will establish two regions , one for values much higher than 120 and one for values much lower than 120.</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#This two regions must cover 5% of the values which is the significance we are considering, the error in case we are wrong when rejecting H0:</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#since its bilateral we will have halph_alpha on each side of the graph, so we will reject values that are below the quartile region of 2.5 and above 97.5 , </span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># we calculate the 97.5 percentile looking at the normal table and we get a value of 1.96 on the right and - 1.96 on the left. So values that are above 1.96 or below -1.96 will fall in the rejection region, allowing us to reject H0 and accept H1. </span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Our pivot value is : -6.21 which falls within the rejection region, therefore we reject H0 and we accept H1. </span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Calculating the p-value for this test-----------------------------------------</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co"># We are considering both sides of the distribution since H1 is its different than 120, which could mean either its smaller or higher than 120:</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co"># First we have to calculate the pivot value:</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>pivot_ps <span class="ot">&lt;-</span> (mean_ps<span class="sc">-</span>population_ps_mean)<span class="sc">/</span>(standard_deviation_ps<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>)) </span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>pivot_ps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#This two regions must cover 5% of the values which is the significance we are considering, the error in case we are wrong when rejecting H0:</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Since its bilateral we will have halph_alpha on each side of the graph, so we will reject values that are below the quartile region of 2.5 and above 97.5, we calculate the 97.5 percentile looking at the normal table and we get a value of    1.96 on the right and - 1.96 on the left. So values that are above 1.96 or below  -1.96 will fall in the rejection region, allowing us to reject H0 and accept H1. </span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Our pivot value is : -6.21 which falls within the rejection region, therefore we reject H0 and we accept H1. </span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Calculating the p-value for this test-----------------------------------------</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co"># We are considering both sides of the distribution since H1 is its different than 120, which could mean either its smaller or higher than 120:</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co"># First we have to calculate the pivot value:</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>pivot_ps <span class="ot">&lt;-</span> (mean_ps<span class="sc">-</span>population_ps_mean)<span class="sc">/</span>(standard_deviation_ps<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>)) </span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>pivot_ps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -6.219405</code></pre>
 </div>
@@ -450,19 +461,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistical inference of diastolic pressure (pd) --------------------------------</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co">#First hypothesis-----------------------------------------------------------------</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># First hypothesis-----------------------------------------------------------------</span></span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#         H0; pd_mean=pd_reference</span></span>
 <span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">#         H1; pd_mean is different than pd_reference</span></span>
 <span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Calculating the 95% CI -------------------------------------------------------</span></span>
 <span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Formula: </span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Formula: </span></span>
 <span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co">#pd_mean-t(n-1, 1-alpha/2)*(standar_deviation_pd/sqrt(16) and pd_mean+t(n-1, 1-alpha/2)*(standar_deviation_pd/sqrt(16)</span></span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>t_15 <span class="ot">&lt;-</span> <span class="fl">2.131</span> </span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>t_15</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Lower CI: pd_mean-t(n-1, 1-alpha/2)*(standar_deviation_pd/sqrt(16)</span></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Upper CI pd_mean+t(n-1,1-alpha/2)*(standar_deviation_pd/sqrt(16)</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>t_15 <span class="ot">&lt;-</span> <span class="fl">2.131</span> </span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>t_15</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.131</code></pre>
 </div>
@@ -474,7 +486,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Rejection area method --------------------------------------------------------</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">#calculating the pivot</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the pivot</span></span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>pd_pivot <span class="ot">&lt;-</span> (pd_mean<span class="sc">-</span>pd_reference)<span class="sc">/</span>(standard_deviation_pd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
 <span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -496,27 +508,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.975</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Checking normal distribution table</span></span>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking normal distribution table</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>p97<span class="fl">.5</span> <span class="ot">&lt;-</span> <span class="fl">1.96</span></span>
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>p2<span class="fl">.5</span> <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">1.96</span></span>
 <span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co">#since our pd_pivot -22.59 , it falls in the rejection area, therefore we reject H0 that says that this young adult that worksout 4 times a week has the same diastolic pressure as a healthy young adult and we accept H1 that the diastolic pressure</span></span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="co">#of this young adult that works out 4 times a week is different than the mean reference diastolic pressure of a healthy young adult.</span></span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Calculating the p-value-------------------------------------------------------</span></span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we want to see the probability of getting a pivot of -22.59 if H0 is true: </span></span>
-<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The probability of getting a value less than or equal to -22.59 is the same as</span></span>
-<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a><span class="co"># the probability of getting a value equal or higher to 22.59 therefore: </span></span>
-<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a><span class="co"># p(Z&gt;22.59)= 1-P(Z&lt;22.59):</span></span>
-<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="fl">-0.998</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Since our pd_pivot -22.59 , it falls in the rejection area, therefore we reject H0 that says that this young adult that worksout 4 times a week has the same diastolic pressure as a healthy young adult and we accept H1 that the diastolic pressure of this young adult that works out 4 times a week is different than the mean reference diastolic pressure of a healthy young adult.</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Calculating the p-value-------------------------------------------------------</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we want to see the probability of getting a pivot of -22.59 if H0 is true: </span></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="co"># The probability of getting a value less than or equal to -22.59 is the same as</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="co"># the probability of getting a value equal or higher to 22.59 therefore: </span></span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="co"># p(Z&gt;22.59)= 1-P(Z&lt;22.59):</span></span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="fl">-0.998</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.002</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">#since its a 2 sided we multiply that by 2:</span></span>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since its a 2 sided we multiply that by 2:</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>pval_pd <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="fl">-0.998</span>)<span class="sc">*</span><span class="dv">2</span></span>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>pval_pd </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -549,7 +560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.004</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since its &lt;  alpha, which is 0.05 , the probability of having a diastolic presure of 56.6875 if H0 is true is 0.4 % , since it is so rare, H0 has to be false, and H1 is true, the probability of being wrong if we accept H1 is 0.4% , since it is so low the chances of rejecting H0 and being wrong are extremely low, therefore we can say that H1 is true with very low probability of being wrong. </span></span>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since its &lt;  alpha, which is 0.05 , the probability of having a diastolic presure of 56.6875 if H0 is true is 0.4 % , since it is so rare, H0 has to be false, and H1 is true, the probability of being wrong if we accept H1 is 0.4% , since it is #so low the chances of rejecting H0 and being wrong are extremely low, therefore we can say that H1 is true with very low probability of being wrong. </span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting systolic and diastolic pressure together--------------------------------</span></span>
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -577,7 +588,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Weight comparison---------------------------------------------------------------- </span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co">#To finish the main analysis, we will see if the weight of this person that works out 4 times a week is the same as the reference ideal body weight of a person that has a height of 182 cm: </span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co"># To finish the main analysis, we will see if the weight of this person that works out 4 times a week is the same as the reference ideal body weight of a person that has a height of 182 cm: </span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>third_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -639,7 +650,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co">#1. calculating the 95% CI, alpha= 0.05--------------------------------------------</span></span>
 <span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="co">#we dont have the population sd , therefore we are on a t-student</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We dont have the population sd , therefore we are on a t-student</span></span>
 <span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>sd_weight <span class="ot">&lt;-</span> <span class="fu">sd</span>(third_data<span class="sc">$</span>peso)</span>
 <span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>sd_weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -660,24 +671,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co">#2. Rejection area method ---------------------------------------------------------</span></span>
 <span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="co">#H0: mean_weight= Reference_weight</span></span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="co">#H1: mean_weight is different than Reference_weight</span></span>
-<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co">#alpha= 0.05</span></span>
-<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co">#calculating the pivot: </span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  H0: mean_weight= Reference_weight</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  H1: mean_weight is different than Reference_weight</span></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co">#  alpha= 0.05</span></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the pivot: </span></span>
 <span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>pivot_weight <span class="ot">&lt;-</span> (mean_weight<span class="sc">-</span>reference_weight)<span class="sc">/</span>(sd_weight<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
 <span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>pivot_weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.87013</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co">#the t-student value is (tn-1,1-alpha/2)= t15,1-0.05/2)=t15, 0.975= ± 2.131</span></span>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The t-student value is (tn-1,1-alpha/2)= t15,1-0.05/2)=t15, 0.975= ± 2.131</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co">#since our pivot or t = -0.87013, it does not fall within the rejection area, therefore we fail to reject H0, there is not enough evidence that shows a difference between the weight of a person that is 182 cm and works out 4 times a week and the reference ideal value of a person of that height. </span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Since our pivot or t = -0.87013, it does not fall within the rejection area, therefore we fail to reject H0, there is not enough evidence that shows a difference between the weight of a person that is 182 cm and works out 4 times a week and the reference ideal value of a person of that height. </span></span>
 <span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="co">#3. calculating the p-value-------------------------------------------------------- </span></span>
-<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="co"># on a normal curve, the probability of getting a value that is equal or less than -0.87 = the probability of getting a value higher than 0.87 and the probability of getting a value higher than 0.87 = 1-probability of getting a value smaller than 0.87 therefore: </span></span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="co"># On a normal curve, the probability of getting a value that is equal or less than -0.87 = the probability of getting a value higher than 0.87 and the probability of getting a value higher than 0.87 = 1-probability of getting a value smaller than   0.87 therefore: </span></span>
 <span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co">#the probability of getting a value less than 0.87= 0.8078:</span></span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The probability of getting a value less than 0.87= 0.8078:</span></span>
 <span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>one_minus_probability_higher_than_0<span class="fl">.87</span> <span class="ot">&lt;-</span> <span class="dv">1</span><span class="fl">-0.8078</span></span>
 <span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a>one_minus_probability_higher_than_0<span class="fl">.87</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -686,7 +697,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.1922= p(Z&lt; -0.87)= p(Z&gt;0.87)</span></span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co">#since we are in a two tail: </span></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Since we are in a two tail: </span></span>
 <span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>p_value_weight <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>one_minus_probability_higher_than_0<span class="fl">.87</span></span>
 <span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>p_value_weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -695,6 +706,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since the p-value is higher than alpha , we fail to reject H0, again there is not enough evidence that shows a difference between the weight of a person that  is 182 cm and works out 4 times a week and the reference ideal value of a person of that height. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="bibliography" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="bibliography"><span class="header-section-number">2</span> Bibliography</h2>
+<p><a href="https://www.cdc.gov/bloodpressure/about.htm" class="uri">https://www.cdc.gov/bloodpressure/about.htm</a></p>
+<p><a href="https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate" class="uri">https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate</a></p>
+<p><a href="https://www.calculators.org/health/ideal-weight.php" class="uri">https://www.calculators.org/health/ideal-weight.php</a></p>
 </section>
 
 </main>

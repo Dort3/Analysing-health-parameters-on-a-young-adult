@@ -1,27 +1,26 @@
 ---
 title: "Analysing health parameters on a young adult"
 author: "David Ortego Casado"
-format: docx
+Format: pdf
+geometry: c(- top=30mm, - left=20mm)
 toc: true
 number-sections: true
-highlight-style: github
-page-layout: article
-editor: visual
+highlight-style: pygments
 ---
 
-Objective:
+## Objective:
 
 The goal of this project is to do a comparison between some health parameters (systolic pressure, diastolic pressure and weight) of one young adult that exercises four times a week versus the average parameters of a healthy young adult to practise how to program in R as well as to practise some statistical concepts.
 
-Material and methods:
+## Material and methods:
 
-This project was the result of considering how I could improve my R programming skilsl as well as practising some basic statistics, the solution was to practise with a dataset, so I created my own dataset by measuring some health parameters that could easily be measured at home, I took a total of 16 observations of my blood pressure , my heart rate (although this variable was not used int he analysis) and my weight.
+This project was the result of considering how I could improve my R programming skils as well as practising some basic statistics, the solution was to practise with a dataset, so I created my own dataset by measuring some health parameters that could easily be measured at home, I took a total of 16 observations of my blood pressure , my heart rate (although this variable was not used in the analysis) and my weight.
 
 After having all the measures, the data was processed and later analysed. After the analysis was done , a report was made with Quarto and the results of the project were shared in Github.
 
-To verify the reference values of blood pressure the website <https://www.cdc.gov/bloodpressure/about.htm> was used. The reference values of pulse rate were obtained from the website <https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate> and to see whats the ideal weight, the calculator from the website <https://www.calculators.org/health/ideal-weight.php> was used. The analysis was done in R and RStudio.
+To verify the reference values of blood pressure the website <https://www.cdc.gov/bloodpressure/about.htm> was used. The reference values of pulse rate were obtained from the website <https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate> and to see what is the ideal weight, the calculator from the website <https://www.calculators.org/health/ideal-weight.php> was used. The analysis was done in R and RStudio.
 
-## Running Code
+## Results
 
 ```{r echo= TRUE, message=FALSE, warning= FALSE}
 #Loading our dataset
@@ -405,4 +404,14 @@ p_value_weight
 # Since the p-value is higher than alpha , we fail to reject H0, again there is not enough evidence that shows a difference between the weight of a person that  is 182 cm and works out 4 times a week and the reference ideal value of a person of that height. 
 ```
 
+## Conclusions
+
+After analysing the systolic , diastolic and weight measurements from an individual that works out 4 times a week and comparing the results with the reference values, it was found that both the systolic and diastolic pressure were lower than the average parameters of 120 /80 mmHg of a healthy individual, however, there were no statistically significant differences between the mean weight and its reference value.
+
 ## Bibliography
+
+<https://www.cdc.gov/bloodpressure/about.htm>
+
+<https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate>
+
+<https://www.calculators.org/health/ideal-weight.php>
