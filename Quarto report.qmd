@@ -1,24 +1,21 @@
 ---
 title: "Analysing health parameters on a young adult"
 author: "David Ortego Casado"
-Format: pdf
-geometry: c(- top=30mm, - left=20mm)
-toc: true
-number-sections: true
-highlight-style: pygments
+format: html
+editor: visual
 ---
 
-## Objective:
+## Objective
 
 The goal of this project is to do a comparison between some health parameters (systolic pressure, diastolic pressure and weight) of one young adult that exercises four times a week versus the average parameters of a healthy young adult to practise how to program in R as well as to practise some statistical concepts.
 
-## Material and methods:
+## Material and methods
 
 This project was the result of considering how I could improve my R programming skils as well as practising some basic statistics, the solution was to practise with a dataset, so I created my own dataset by measuring some health parameters that could easily be measured at home, I took a total of 16 observations of my blood pressure , my heart rate (although this variable was not used in the analysis) and my weight.
 
 After having all the measures, the data was processed and later analysed. After the analysis was done , a report was made with Quarto and the results of the project were shared in Github.
 
-To verify the reference values of blood pressure the website <https://www.cdc.gov/bloodpressure/about.htm> was used. The reference values of pulse rate were obtained from the website <https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate> and to see what is the ideal weight, the calculator from the website <https://www.calculators.org/health/ideal-weight.php> was used. The analysis was done in R and RStudio.
+The reference values of blood pressure were obtained from the Center for Disease Control and Prevention (1) and the reference weight was calculated using Calculators.org. The analysis was done in R and RStudio.
 
 ## Results
 
@@ -39,21 +36,21 @@ first_data
 
 # Removing a date from the variable momento_del_dia--------------------------------
 
-second_data <- separate(first_data, momento_del_dia, into =c("dia", "hora"),sep=" ")
+second_data <- separate(first_data, time, into =c("day", "time"),sep=" ")
 
 second_data
 
 third_data <- second_data %>% 
- select(hora, ps, pd, pulso, peso)
+ select(time, sp, dp, pulse, weight)
 third_data
 
 # Plotting Systolic pressure------------------------------------------------------- 
 ps_graph <- third_data %>% 
- ggplot(aes(x= hora,
-            y=ps))
+ ggplot(aes(x= time,
+            y=sp))
 
 ps_graph+
- geom_line(group= "ps",
+ geom_line(group= "sp",
            color= "dodgerblue")+
  geom_point(color="dodgerblue4")+
  geom_hline(yintercept = 120)+
@@ -66,30 +63,30 @@ ps_graph+
 # Statistical inference of systolic pressure (ps) ---------------------------------
 
 
-mean_ps <- mean(third_data$ps)
-mean_ps
+mean_sp <- mean(third_data$sp)
+mean_sp
 
-standard_deviation_ps <- sd(third_data$ps)
-standard_deviation_ps
+standard_deviation_sp <- sd(third_data$sp)
+standard_deviation_sp
 
 # The population value for sistolic pressure for a young adult is 120
 
-population_ps_mean <- 120
+population_sp_mean <- 120
 
 # Since we have a small sample size, only 16 observations and we dont know the population standard deviation we are on a t-student distribution.
 
 # First hypothesis-----------------------------------------------------------------
-#         H0; mean_ps=population_ps_mean
-#         H1; mean_ps is different than population_ps_mean
+#         H0; mean_sp = population_ps_mean
+#         H1; mean_sp is different than population_ps_mean
 
 # 1. Calculating 95% Confidence interval (CI) -------------------------------------
 # 
 
 # n= 16
 
-# mean_ps= 109.5625
+# mean_sp= 109.5625
 
-# standard_deviation_ps= 6.712861
+# standard_deviation_sp= 6.712861
 
 # degrees of freedom = n-1 = 16-1=15
 
@@ -101,13 +98,13 @@ percentile <- 1-half_alpha
 
 # Now lets look on the t-student distribution table for the value of n-1=16-1=15   degrees of freedom where 97.5% of the values are inferior to it: 
 
-t_student_ps <- 2.131
+t_student_sp <- 2.131
 
 # The CI is: 
 
-lower_CI <- mean_ps-t_student_ps*(standard_deviation_ps/sqrt(16))
+lower_CI <- mean_sp-t_student_sp*(standard_deviation_sp/sqrt(16))
 lower_CI
-upper_CI <- mean_ps+ t_student_ps*(standard_deviation_ps/sqrt(16))
+upper_CI <- mean_sp+ t_student_sp*(standard_deviation_sp/sqrt(16))
 upper_CI
 CI_ps <- c(lower_CI,upper_CI)
 CI_ps
@@ -117,7 +114,7 @@ CI_ps
 # 2. Method of the rejection area -------------------------------------------------
 # we have to calculate the pivot value: 
 
-pivot <-  (mean_ps-population_ps_mean)/(standard_deviation_ps/sqrt(16))
+pivot <-  (mean_sp-population_sp_mean)/(standard_deviation_sp/sqrt(16))
 pivot
 
 # Delimiting rejection zone: 
@@ -136,8 +133,8 @@ pivot
 
 # First we have to calculate the pivot value:
 
-pivot_ps <- (mean_ps-population_ps_mean)/(standard_deviation_ps/sqrt(16)) 
-pivot_ps
+pivot_sp <- (mean_sp-population_sp_mean)/(standard_deviation_sp/sqrt(16)) 
+pivot_sp
 
 # Asumming Ho , the probability of finding lower values of our pivot is: 
 
@@ -146,15 +143,15 @@ probability_pivot
 
 # Since we are considering both sides:
 
-p_value_ps <- probability_pivot*2
-p_value_ps
+p_value_sp <- probability_pivot*2
+p_value_sp
 
 #Second hypothesis-----------------------------------------------------------------
 
 # Now we know that the value is different than the reference value, we want to see if its smaller or higher, looking at the graph the data suggests that it is smaller, so we will do the next hypothesis:
 
-# H0: ps_mean_david= ps_mean_pop; 109.5625= 120
-# H1: ps_mean_david < ps_mean_pop; 109.5625 < 120
+# H0: mean_sp = ps_mean_pop; 109.5625= 120
+# H1: mean_sp < ps_mean_pop; 109.5625 < 120
 
 # Here we are in a one tail hypothesis test, before we were looking at values above and below the mean, if H0 is false, it meant it was either higher or lower than the population mean. 
 
@@ -187,29 +184,29 @@ first_data
 
 pd_analysis <- first_data %>% 
  separate_wider_delim(delim = " ",
-                      cols = momento_del_dia,
-                      names = c("dia", "hora")) %>% 
- select(hora,pd)
+                      cols = time,
+                      names = c("day", "time")) %>% 
+ select(time,dp)
 
 pd_analysis
 
-pd_mean <- mean(pd_analysis$pd)
-pd_mean
+dp_mean <- mean(pd_analysis$dp)
+dp_mean
 
-pd_reference <- 80
-pd_reference
+dp_reference <- 80
+dp_reference
 
-standard_deviation_pd <- sd(pd_analysis$pd)
-standard_deviation_pd
+standard_deviation_dp <- sd(pd_analysis$dp)
+standard_deviation_dp
 
 # Plotting  the diastolic pressure-------------------------------------------------
 
 pd_graph <- 
 third_data %>% 
- ggplot(aes(x= hora,
-            y= pd))
+ ggplot(aes(x= time,
+            y= dp))
 pd_graph+
- geom_line(group= "pd",
+ geom_line(group= "dp",
            color= "aquamarine")+
  geom_point(color="aquamarine4")+
  geom_hline(yintercept = 60)+
@@ -222,32 +219,32 @@ pd_graph+
 # Statistical inference of diastolic pressure (pd) --------------------------------
 
 # First hypothesis-----------------------------------------------------------------
-#         H0; pd_mean=pd_reference
-#         H1; pd_mean is different than pd_reference
+#         H0; dp_mean = pd_reference
+#         H1; dp_mean is different than pd_reference
 
 # 1. Calculating the 95% CI -------------------------------------------------------
 
 # Formula: 
 
-# Lower CI: pd_mean-t(n-1, 1-alpha/2)*(standar_deviation_pd/sqrt(16)
-# Upper CI pd_mean+t(n-1,1-alpha/2)*(standar_deviation_pd/sqrt(16)
+# Lower CI: dp_mean-t(n-1, 1-alpha/2)*(standar_deviation_dp/sqrt(16)
+# Upper CI dp_mean+t(n-1,1-alpha/2)*(standar_deviation_dp/sqrt(16)
 
 t_15 <- 2.131 
 
 t_15
 
 
-CI_pd_15 <- c(pd_mean-t_15*(standard_deviation_pd/sqrt(16)), pd_mean+t_15*(standard_deviation_pd/sqrt(16)))
+CI_dp_15 <- c(dp_mean-t_15*(standard_deviation_dp/sqrt(16)), dp_mean+t_15*(standard_deviation_dp/sqrt(16)))
 
-CI_pd_15
+CI_dp_15
 
 # 2. Rejection area method --------------------------------------------------------
 
 # Calculating the pivot
 
-pd_pivot <- (pd_mean-pd_reference)/(standard_deviation_pd/sqrt(16))
+dp_pivot <- (dp_mean-dp_reference)/(standard_deviation_dp/sqrt(16))
 
-pd_pivot
+dp_pivot
 
 alpha
 
@@ -276,8 +273,8 @@ p2.5 <- -1.96
 
 # Since its a 2 sided we multiply that by 2:
 
-pval_pd <- (1-0.998)*2
-pval_pd 
+pval_dp <- (1-0.998)*2
+pval_dp 
 
 # Since its smaller than our alhpa (0.05) we reject H0 and accept H1 that its different. 
 
@@ -285,8 +282,8 @@ pval_pd
 
 # Now, observing the data, it seems like the value is smaller than 60, we want to make the hypothesis that it is less that the average value for that population: 
 
-# H0: pd_mean= pd_reference
-# H1: pd_mean< pd_reference
+# H0: dp_mean = pd_reference
+# H1: dp_mean < pd_reference
 #
 # 1. Calculating the 95% CI ----------------------------------------------------
 
@@ -297,22 +294,22 @@ pval_pd
 
 # 3. Calculating the p-value-------------------------------------------------------
 
-# p(Z<-22.59)=P(z> 22.59)= 1-p(Z<22.59)= pval_pd
-# Since its a one tail, the pval is the same as pval_pd :
+# p(Z<-22.59)=P(z> 22.59)= 1-p(Z<22.59)= pval_dp
+# Since its a one tail, the pval is the same as pval_dp :
 
-pval_one_side_pd <- pval_pd
-pval_one_side_pd
+pval_one_side_dp <- pval_dp
+pval_one_side_dp
 
 # Since its <  alpha, which is 0.05 , the probability of having a diastolic presure of 56.6875 if H0 is true is 0.4 % , since it is so rare, H0 has to be false, and H1 is true, the probability of being wrong if we accept H1 is 0.4% , since it is #so low the chances of rejecting H0 and being wrong are extremely low, therefore we can say that H1 is true with very low probability of being wrong. 
 
 # Plotting systolic and diastolic pressure together--------------------------------
 
 third_data %>% 
-        ggplot(aes(x= hora))+
-        geom_point(aes(y= ps), color= "lightblue")+
-        geom_point(aes(y= pd), color= "aquamarine4")+
-        geom_line(aes(y= ps), group= "ps", color= "lightblue")+
-        geom_line(aes(y= pd), group= "pd", color= "aquamarine4")+
+        ggplot(aes(x= time))+
+        geom_point(aes(y= sp), color= "lightblue")+
+        geom_point(aes(y= dp), color= "aquamarine4")+
+        geom_line(aes(y= sp), group= "sp", color= "lightblue")+
+        geom_line(aes(y= dp), group= "dp", color= "aquamarine4")+
         geom_hline(yintercept = 120, color= "cadetblue4")+
         geom_hline(yintercept = 60, color= "cadetblue4")+
         geom_vline(xintercept = c("00:30:00", "21:30:00"),
@@ -320,7 +317,7 @@ third_data %>%
         labs(title= "Systolic and diastolic pressure",
              x= "Time",
              y= "Pressure",
-             caption = "lightblue represents the systolic pressure and the aquamarine4 represents the dyastolic pressure")+
+             )+
  theme_bw()+
  theme(axis.text.x= element_text( size= "5"))
 
@@ -329,19 +326,19 @@ third_data %>%
 
 third_data
 
-mean_weight <- mean(third_data$peso)
-mean_weight
+weight_mean <- mean(third_data$weight)
+weight_mean
 
-reference_weight <- 72.87
-reference_weight
+weight_reference <- 72.87
+weight_reference
 
 # Plotting  weight ----------------------------------------------------------------
 
 third_data %>% 
-ggplot(aes(x= hora))+
- geom_point(aes(y= peso),
+ggplot(aes(x= time))+
+ geom_point(aes(y= weight),
             color= "deepskyblue")+
- geom_line(aes(y= peso),group= "peso", color= "deepskyblue1")+
+ geom_line(aes(y= weight),group= "weight", color= "deepskyblue1")+
  geom_hline( yintercept= 72.87,
              color= "deepskyblue4")+
  geom_vline(xintercept="22:30:00",
@@ -360,13 +357,13 @@ ggplot(aes(x= hora))+
 
 # We dont have the population sd , therefore we are on a t-student
 
-sd_weight <- sd(third_data$peso)
+sd_weight <- sd(third_data$weight)
 sd_weight
 t_value_15_0.975 <- 2.131
 
 error_weight <- 2.131*(sd_weight/sqrt(16))
 
-CI_weight <- c(mean_weight-error_weight, mean_weight+error_weight)
+CI_weight <- c(weight_mean-error_weight, weight_mean+error_weight)
 
 CI_weight
 
@@ -374,12 +371,12 @@ CI_weight
 
 #2. Rejection area method ---------------------------------------------------------
 
-#  H0: mean_weight= Reference_weight
-#  H1: mean_weight is different than Reference_weight
+#  H0: weight_mean = Reference_weight
+#  H1: weight_mean is different than Reference_weight
 #  alpha= 0.05
 # Calculating the pivot: 
 
-pivot_weight <- (mean_weight-reference_weight)/(sd_weight/sqrt(16))
+pivot_weight <- (weight_mean-weight_reference)/(sd_weight/sqrt(16))
 pivot_weight
 
 # The t-student value is (tn-1,1-alpha/2)= t15,1-0.05/2)=t15, 0.975= ± 2.131
@@ -406,12 +403,10 @@ p_value_weight
 
 ## Conclusions
 
-After analysing the systolic , diastolic and weight measurements from an individual that works out 4 times a week and comparing the results with the reference values, it was found that both the systolic and diastolic pressure were lower than the average parameters of 120 /80 mmHg of a healthy individual, however, there were no statistically significant differences between the mean weight and its reference value.
+After analysing the systolic , diastolic and weight measurements from an individual that works out 4 times a week and comparing the results with the reference values, it was found that both the systolic and diastolic pressure were lower than the average parameters of 120 /80 mmHg of a healthy individual, however, there were no statistically significant differences between the weight and its reference value.
 
 ## Bibliography
 
-<https://www.cdc.gov/bloodpressure/about.htm>
+1.  *High Blood Pressure Symptoms, Causes, and Problems \| cdc.gov*. (2023, August 29). Centers for Disease Control and Prevention. https://www.cdc.gov/bloodpressure/about.htm
 
-<https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate>
-
-<https://www.calculators.org/health/ideal-weight.php>
+2.  *How much should I weigh? Ideal body weight calculator for women & men*. (n.d.). https://www.calculators.org/health/ideal-weight.php
