@@ -15,7 +15,7 @@ This project was the result of considering how I could improve my R programming 
 
 After having all the measures, the data was processed and later analysed. After the analysis was done , a report was made with Quarto and the results of the project were shared in Github.
 
-The reference values of blood pressure were obtained from the Center for Disease Control and Prevention (1) and the reference weight was calculated using Calculators.org. The analysis was done in R and RStudio.
+The reference values of blood pressure were obtained from the Center for Disease Control and Prevention (1) and the reference weight was calculated using Calculators.org (2). The analysis was done in R and RStudio.
 
 ## Results
 
