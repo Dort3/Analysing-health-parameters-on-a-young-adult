@@ -175,7 +175,7 @@ p_value_sp
 probability_pivot <- 1-0.9989
 probability_pivot
 
-# Now we will do the same for the diastolic pressure and the weigh-----------------
+# Now we will do the same for the diastolic pressure and the weight-----------------
 
 #Diastolic pressure comparison----------------------------------------------------- 
 #This time , to clean the data and remove the date column that was imported from Excel and that is wrong and not needed, we will use a different function than the one used when calculating the systolic pressure, the result is the same:
