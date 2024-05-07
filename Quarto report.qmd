@@ -297,7 +297,7 @@ pval_dp
 # p(Z<-22.59)=P(z> 22.59)= 1-p(Z<22.59)= pval_dp
 # Since its a one tail, the pval is the same as pval_dp :
 
-pval_one_side_dp <- pval_dp
+pval_one_side_dp <- 1-0.998 
 pval_one_side_dp
 
 # Since its <  alpha, which is 0.05 , the probability of having a diastolic presure of 56.6875 if H0 is true is 0.4 % , since it is so rare, H0 has to be false, and H1 is true, the probability of being wrong if we accept H1 is 0.4% , since it is #so low the chances of rejecting H0 and being wrong are extremely low, therefore we can say that H1 is true with very low probability of being wrong. 
