@@ -150,8 +150,8 @@ p_value_sp
 
 # Now we know that the value is different than the reference value, we want to see if its smaller or higher, looking at the graph the data suggests that it is smaller, so we will do the next hypothesis:
 
-# H0: mean_sp = ps_mean_pop; 109.5625= 120
-# H1: mean_sp < ps_mean_pop; 109.5625 < 120
+# H0: mean_sp = population_sp_mean; 109.5625= 120
+# H1: mean_sp < population_sp_mean; 109.5625 < 120
 
 # Here we are in a one tail hypothesis test, before we were looking at values above and below the mean, if H0 is false, it meant it was either higher or lower than the population mean. 
 
