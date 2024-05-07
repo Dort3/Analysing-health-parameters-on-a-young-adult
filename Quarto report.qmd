@@ -216,11 +216,11 @@ pd_graph+
  theme_bw()+
  theme(axis.text.x= element_text( size= "5"))
 
-# Statistical inference of diastolic pressure (pd) --------------------------------
+# Statistical inference of diastolic pressure (dp) --------------------------------
 
 # First hypothesis-----------------------------------------------------------------
-#         H0; dp_mean = pd_reference
-#         H1; dp_mean is different than pd_reference
+#         H0; dp_mean = dp_reference
+#         H1; dp_mean is different than dp_reference
 
 # 1. Calculating the 95% CI -------------------------------------------------------
 
