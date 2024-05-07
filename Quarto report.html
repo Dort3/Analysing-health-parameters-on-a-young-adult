@@ -72,19 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body>
+<body class="fullcontent">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link active" data-scroll-target="#running-code"><span class="header-section-number">1</span> Running Code</a></li>
-  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography"><span class="header-section-number">2</span> Bibliography</a></li>
-  </ul>
-</nav>
-</div>
+
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -112,14 +103,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Objective:</p>
+<section id="objective" class="level2">
+<h2 class="anchored" data-anchor-id="objective">Objective</h2>
 <p>The goal of this project is to do a comparison between some health parameters (systolic pressure, diastolic pressure and weight) of one young adult that exercises four times a week versus the average parameters of a healthy young adult to practise how to program in R as well as to practise some statistical concepts.</p>
-<p>Material and methods:</p>
+</section>
+<section id="material-and-methods" class="level2">
+<h2 class="anchored" data-anchor-id="material-and-methods">Material and methods</h2>
 <p>This project was the result of considering how I could improve my R programming skils as well as practising some basic statistics, the solution was to practise with a dataset, so I created my own dataset by measuring some health parameters that could easily be measured at home, I took a total of 16 observations of my blood pressure , my heart rate (although this variable was not used in the analysis) and my weight.</p>
 <p>After having all the measures, the data was processed and later analysed. After the analysis was done , a report was made with Quarto and the results of the project were shared in Github.</p>
-<p>To verify the reference values of blood pressure the website <a href="https://www.cdc.gov/bloodpressure/about.htm" class="uri">https://www.cdc.gov/bloodpressure/about.htm</a> was used.&nbsp;The reference values of pulse rate were obtained from the website <a href="https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate" class="uri">https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate</a> and to see what is the ideal weight, the calculator from the website <a href="https://www.calculators.org/health/ideal-weight.php" class="uri">https://www.calculators.org/health/ideal-weight.php</a> was used. The analysis was done in R and RStudio.</p>
-<section id="running-code" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="running-code"><span class="header-section-number">1</span> Running Code</h2>
+<p>The reference values of blood pressure were obtained from the Center for Disease Control and Prevention (1) and the reference weight was calculated using Calculators.org (2). The analysis was done in R and RStudio.</p>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Loading our dataset</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
@@ -138,82 +133,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>first_data </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 16 × 5
-   momento_del_dia        ps    pd pulso  peso
-   &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 1899-12-31 09:30:00   104    52    52  72.6
- 2 1899-12-31 10:30:00   109    52    58  72.6
- 3 1899-12-31 11:30:00   100    52    50  72.9
- 4 1899-12-31 12:30:00    98    54    47  72.7
- 5 1899-12-31 13:30:00   103    57    44  72.2
- 6 1899-12-31 14:30:00   102    60    45  72.1
- 7 1899-12-31 15:30:00   112    54    44  72.8
- 8 1899-12-31 16:30:00   111    53    47  72.9
- 9 1899-12-31 17:30:00   120    57    49  73.1
-10 1899-12-31 18:30:00   109    55    46  72.6
-11 1899-12-31 19:30:00   111    58    46  73.1
-12 1899-12-31 20:30:00   116    60    49  72.7
-13 1899-12-31 21:30:00   112    63    44  72.4
-14 1899-12-31 22:30:00   114    59    49  73.5
-15 1899-12-31 23:30:00   111    55    49  73.2
-16 1900-01-01 00:30:00   121    66    51  73.2</code></pre>
+   time                   sp    dp pulse weight
+   &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1 1899-12-31 09:30:00   104    52    52   72.6
+ 2 1899-12-31 10:30:00   109    52    58   72.6
+ 3 1899-12-31 11:30:00   100    52    50   72.9
+ 4 1899-12-31 12:30:00    98    54    47   72.7
+ 5 1899-12-31 13:30:00   103    57    44   72.2
+ 6 1899-12-31 14:30:00   102    60    45   72.1
+ 7 1899-12-31 15:30:00   112    54    44   72.8
+ 8 1899-12-31 16:30:00   111    53    47   72.9
+ 9 1899-12-31 17:30:00   120    57    49   73.1
+10 1899-12-31 18:30:00   109    55    46   72.6
+11 1899-12-31 19:30:00   111    58    46   73.1
+12 1899-12-31 20:30:00   116    60    49   72.7
+13 1899-12-31 21:30:00   112    63    44   72.4
+14 1899-12-31 22:30:00   114    59    49   73.5
+15 1899-12-31 23:30:00   111    55    49   73.2
+16 1900-01-01 00:30:00   121    66    51   73.2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing a date from the variable time------------------------------------------</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>second_data <span class="ot">&lt;-</span> <span class="fu">separate</span>(first_data, momento_del_dia, <span class="at">into =</span><span class="fu">c</span>(<span class="st">"dia"</span>, <span class="st">"hora"</span>),<span class="at">sep=</span><span class="st">" "</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>second_data <span class="ot">&lt;-</span> <span class="fu">separate</span>(first_data, time, <span class="at">into =</span><span class="fu">c</span>(<span class="st">"day"</span>, <span class="st">"time"</span>),<span class="at">sep=</span><span class="st">" "</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>second_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 16 × 6
-   dia        hora        ps    pd pulso  peso
-   &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 1899-12-31 09:30:00   104    52    52  72.6
- 2 1899-12-31 10:30:00   109    52    58  72.6
- 3 1899-12-31 11:30:00   100    52    50  72.9
- 4 1899-12-31 12:30:00    98    54    47  72.7
- 5 1899-12-31 13:30:00   103    57    44  72.2
- 6 1899-12-31 14:30:00   102    60    45  72.1
- 7 1899-12-31 15:30:00   112    54    44  72.8
- 8 1899-12-31 16:30:00   111    53    47  72.9
- 9 1899-12-31 17:30:00   120    57    49  73.1
-10 1899-12-31 18:30:00   109    55    46  72.6
-11 1899-12-31 19:30:00   111    58    46  73.1
-12 1899-12-31 20:30:00   116    60    49  72.7
-13 1899-12-31 21:30:00   112    63    44  72.4
-14 1899-12-31 22:30:00   114    59    49  73.5
-15 1899-12-31 23:30:00   111    55    49  73.2
-16 1900-01-01 00:30:00   121    66    51  73.2</code></pre>
+   day        time        sp    dp pulse weight
+   &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1 1899-12-31 09:30:00   104    52    52   72.6
+ 2 1899-12-31 10:30:00   109    52    58   72.6
+ 3 1899-12-31 11:30:00   100    52    50   72.9
+ 4 1899-12-31 12:30:00    98    54    47   72.7
+ 5 1899-12-31 13:30:00   103    57    44   72.2
+ 6 1899-12-31 14:30:00   102    60    45   72.1
+ 7 1899-12-31 15:30:00   112    54    44   72.8
+ 8 1899-12-31 16:30:00   111    53    47   72.9
+ 9 1899-12-31 17:30:00   120    57    49   73.1
+10 1899-12-31 18:30:00   109    55    46   72.6
+11 1899-12-31 19:30:00   111    58    46   73.1
+12 1899-12-31 20:30:00   116    60    49   72.7
+13 1899-12-31 21:30:00   112    63    44   72.4
+14 1899-12-31 22:30:00   114    59    49   73.5
+15 1899-12-31 23:30:00   111    55    49   73.2
+16 1900-01-01 00:30:00   121    66    51   73.2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>third_data <span class="ot">&lt;-</span> second_data <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">select</span>(hora, ps, pd, pulso, peso)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">select</span>(time, sp, dp, pulse, weight)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>third_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 16 × 5
-   hora        ps    pd pulso  peso
-   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 09:30:00   104    52    52  72.6
- 2 10:30:00   109    52    58  72.6
- 3 11:30:00   100    52    50  72.9
- 4 12:30:00    98    54    47  72.7
- 5 13:30:00   103    57    44  72.2
- 6 14:30:00   102    60    45  72.1
- 7 15:30:00   112    54    44  72.8
- 8 16:30:00   111    53    47  72.9
- 9 17:30:00   120    57    49  73.1
-10 18:30:00   109    55    46  72.6
-11 19:30:00   111    58    46  73.1
-12 20:30:00   116    60    49  72.7
-13 21:30:00   112    63    44  72.4
-14 22:30:00   114    59    49  73.5
-15 23:30:00   111    55    49  73.2
-16 00:30:00   121    66    51  73.2</code></pre>
+   time        sp    dp pulse weight
+   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1 09:30:00   104    52    52   72.6
+ 2 10:30:00   109    52    58   72.6
+ 3 11:30:00   100    52    50   72.9
+ 4 12:30:00    98    54    47   72.7
+ 5 13:30:00   103    57    44   72.2
+ 6 14:30:00   102    60    45   72.1
+ 7 15:30:00   112    54    44   72.8
+ 8 16:30:00   111    53    47   72.9
+ 9 17:30:00   120    57    49   73.1
+10 18:30:00   109    55    46   72.6
+11 19:30:00   111    58    46   73.1
+12 20:30:00   116    60    49   72.7
+13 21:30:00   112    63    44   72.4
+14 22:30:00   114    59    49   73.5
+15 23:30:00   111    55    49   73.2
+16 00:30:00   121    66    51   73.2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting Systolic pressure------------------------------------------------------- </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ps_graph <span class="ot">&lt;-</span> third_data <span class="sc">%&gt;%</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> hora,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">y=</span>ps))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> time,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">y=</span>sp))</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>ps_graph<span class="sc">+</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_line</span>(<span class="at">group=</span> <span class="st">"ps"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_line</span>(<span class="at">group=</span> <span class="st">"sp"</span>,</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">color=</span> <span class="st">"dodgerblue"</span>)<span class="sc">+</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"dodgerblue4"</span>)<span class="sc">+</span></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">120</span>)<span class="sc">+</span></span>
@@ -232,34 +227,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistical inference of systolic pressure (ps) ---------------------------------</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>mean_ps <span class="ot">&lt;-</span> <span class="fu">mean</span>(third_data<span class="sc">$</span>ps)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>mean_ps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>mean_sp <span class="ot">&lt;-</span> <span class="fu">mean</span>(third_data<span class="sc">$</span>sp)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>mean_sp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 109.5625</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>standard_deviation_ps <span class="ot">&lt;-</span> <span class="fu">sd</span>(third_data<span class="sc">$</span>ps)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>standard_deviation_ps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>standard_deviation_sp <span class="ot">&lt;-</span> <span class="fu">sd</span>(third_data<span class="sc">$</span>sp)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>standard_deviation_sp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.712861</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The population value for sistolic pressure for a young adult is 120</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>population_ps_mean <span class="ot">&lt;-</span> <span class="dv">120</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>population_sp_mean <span class="ot">&lt;-</span> <span class="dv">120</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Since we have a small sample size, only 16 observations and we dont know the population standard deviation we are on a t-student distribution.</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># First hypothesis-----------------------------------------------------------------</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#         H0; mean_ps=population_ps_mean</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#         H1; mean_ps is different than population_ps_mean</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#         H0; mean_sp = population_ps_mean</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#         H1; mean_sp is different than population_ps_mean</span></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Calculating 95% Confidence interval (CI) -------------------------------------</span></span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># n= 16</span></span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># mean_ps= 109.5625</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># mean_sp= 109.5625</span></span>
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co"># standard_deviation_ps= 6.712861</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co"># standard_deviation_sp= 6.712861</span></span>
 <span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co"># degrees of freedom = n-1 = 16-1=15</span></span>
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
@@ -271,16 +266,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Now lets look on the t-student distribution table for the value of n-1=16-1=15   degrees of freedom where 97.5% of the values are inferior to it: </span></span>
 <span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>t_student_ps <span class="ot">&lt;-</span> <span class="fl">2.131</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>t_student_sp <span class="ot">&lt;-</span> <span class="fl">2.131</span></span>
 <span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="co"># The CI is: </span></span>
 <span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>lower_CI <span class="ot">&lt;-</span> mean_ps<span class="sc">-</span>t_student_ps<span class="sc">*</span>(standard_deviation_ps<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>lower_CI <span class="ot">&lt;-</span> mean_sp<span class="sc">-</span>t_student_sp<span class="sc">*</span>(standard_deviation_sp<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
 <span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>lower_CI</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 105.9862</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>upper_CI <span class="ot">&lt;-</span> mean_ps<span class="sc">+</span> t_student_ps<span class="sc">*</span>(standard_deviation_ps<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>upper_CI <span class="ot">&lt;-</span> mean_sp<span class="sc">+</span> t_student_sp<span class="sc">*</span>(standard_deviation_sp<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>upper_CI</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 113.1388</code></pre>
@@ -295,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Method of the rejection area -------------------------------------------------</span></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># we have to calculate the pivot value: </span></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>pivot <span class="ot">&lt;-</span>  (mean_ps<span class="sc">-</span>population_ps_mean)<span class="sc">/</span>(standard_deviation_ps<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>pivot <span class="ot">&lt;-</span>  (mean_sp<span class="sc">-</span>population_sp_mean)<span class="sc">/</span>(standard_deviation_sp<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>pivot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -6.219405</code></pre>
@@ -316,8 +311,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co"># First we have to calculate the pivot value:</span></span>
 <span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>pivot_ps <span class="ot">&lt;-</span> (mean_ps<span class="sc">-</span>population_ps_mean)<span class="sc">/</span>(standard_deviation_ps<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>)) </span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>pivot_ps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>pivot_sp <span class="ot">&lt;-</span> (mean_sp<span class="sc">-</span>population_sp_mean)<span class="sc">/</span>(standard_deviation_sp<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>)) </span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>pivot_sp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -6.219405</code></pre>
 </div>
@@ -330,8 +325,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since we are considering both sides:</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>p_value_ps <span class="ot">&lt;-</span> probability_pivot<span class="sc">*</span><span class="dv">2</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>p_value_ps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>p_value_sp <span class="ot">&lt;-</span> probability_pivot<span class="sc">*</span><span class="dv">2</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>p_value_sp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0022</code></pre>
 </div>
@@ -339,8 +334,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we know that the value is different than the reference value, we want to see if its smaller or higher, looking at the graph the data suggests that it is smaller, so we will do the next hypothesis:</span></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: ps_mean_david= ps_mean_pop; 109.5625= 120</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># H1: ps_mean_david &lt; ps_mean_pop; 109.5625 &lt; 120</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: mean_sp = ps_mean_pop; 109.5625= 120</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># H1: mean_sp &lt; ps_mean_pop; 109.5625 &lt; 120</span></span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we are in a one tail hypothesis test, before we were looking at values above and below the mean, if H0 is false, it meant it was either higher or lower than the population mean. </span></span>
 <span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
@@ -374,35 +369,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>first_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 16 × 5
-   momento_del_dia        ps    pd pulso  peso
-   &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 1899-12-31 09:30:00   104    52    52  72.6
- 2 1899-12-31 10:30:00   109    52    58  72.6
- 3 1899-12-31 11:30:00   100    52    50  72.9
- 4 1899-12-31 12:30:00    98    54    47  72.7
- 5 1899-12-31 13:30:00   103    57    44  72.2
- 6 1899-12-31 14:30:00   102    60    45  72.1
- 7 1899-12-31 15:30:00   112    54    44  72.8
- 8 1899-12-31 16:30:00   111    53    47  72.9
- 9 1899-12-31 17:30:00   120    57    49  73.1
-10 1899-12-31 18:30:00   109    55    46  72.6
-11 1899-12-31 19:30:00   111    58    46  73.1
-12 1899-12-31 20:30:00   116    60    49  72.7
-13 1899-12-31 21:30:00   112    63    44  72.4
-14 1899-12-31 22:30:00   114    59    49  73.5
-15 1899-12-31 23:30:00   111    55    49  73.2
-16 1900-01-01 00:30:00   121    66    51  73.2</code></pre>
+   time                   sp    dp pulse weight
+   &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1 1899-12-31 09:30:00   104    52    52   72.6
+ 2 1899-12-31 10:30:00   109    52    58   72.6
+ 3 1899-12-31 11:30:00   100    52    50   72.9
+ 4 1899-12-31 12:30:00    98    54    47   72.7
+ 5 1899-12-31 13:30:00   103    57    44   72.2
+ 6 1899-12-31 14:30:00   102    60    45   72.1
+ 7 1899-12-31 15:30:00   112    54    44   72.8
+ 8 1899-12-31 16:30:00   111    53    47   72.9
+ 9 1899-12-31 17:30:00   120    57    49   73.1
+10 1899-12-31 18:30:00   109    55    46   72.6
+11 1899-12-31 19:30:00   111    58    46   73.1
+12 1899-12-31 20:30:00   116    60    49   72.7
+13 1899-12-31 21:30:00   112    63    44   72.4
+14 1899-12-31 22:30:00   114    59    49   73.5
+15 1899-12-31 23:30:00   111    55    49   73.2
+16 1900-01-01 00:30:00   121    66    51   73.2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pd_analysis <span class="ot">&lt;-</span> first_data <span class="sc">%&gt;%</span> </span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">separate_wider_delim</span>(<span class="at">delim =</span> <span class="st">" "</span>,</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cols =</span> momento_del_dia,</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"dia"</span>, <span class="st">"hora"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">select</span>(hora,pd)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cols =</span> time,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"day"</span>, <span class="st">"time"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">select</span>(time,dp)</span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>pd_analysis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 16 × 2
-   hora        pd
+   time        dp
    &lt;chr&gt;    &lt;dbl&gt;
  1 09:30:00    52
  2 10:30:00    52
@@ -421,18 +416,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 15 23:30:00    55
 16 00:30:00    66</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pd_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(pd_analysis<span class="sc">$</span>pd)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>pd_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dp_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(pd_analysis<span class="sc">$</span>dp)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>dp_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 56.6875</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>pd_reference <span class="ot">&lt;-</span> <span class="dv">80</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>pd_reference</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>dp_reference <span class="ot">&lt;-</span> <span class="dv">80</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>dp_reference</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 80</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>standard_deviation_pd <span class="ot">&lt;-</span> <span class="fu">sd</span>(pd_analysis<span class="sc">$</span>pd)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>standard_deviation_pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>standard_deviation_dp <span class="ot">&lt;-</span> <span class="fu">sd</span>(pd_analysis<span class="sc">$</span>dp)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>standard_deviation_dp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.126641</code></pre>
 </div>
@@ -440,10 +435,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>pd_graph <span class="ot">&lt;-</span> </span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>third_data <span class="sc">%&gt;%</span> </span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> hora,</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">y=</span> pd))</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> time,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">y=</span> dp))</span>
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>pd_graph<span class="sc">+</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_line</span>(<span class="at">group=</span> <span class="st">"pd"</span>,</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_line</span>(<span class="at">group=</span> <span class="st">"dp"</span>,</span>
 <span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">color=</span> <span class="st">"aquamarine"</span>)<span class="sc">+</span></span>
 <span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"aquamarine4"</span>)<span class="sc">+</span></span>
 <span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">60</span>)<span class="sc">+</span></span>
@@ -462,15 +457,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistical inference of diastolic pressure (pd) --------------------------------</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># First hypothesis-----------------------------------------------------------------</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#         H0; pd_mean=pd_reference</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">#         H1; pd_mean is different than pd_reference</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#         H0; dp_mean = pd_reference</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">#         H1; dp_mean is different than pd_reference</span></span>
 <span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Calculating the 95% CI -------------------------------------------------------</span></span>
 <span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Formula: </span></span>
 <span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Lower CI: pd_mean-t(n-1, 1-alpha/2)*(standar_deviation_pd/sqrt(16)</span></span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Upper CI pd_mean+t(n-1,1-alpha/2)*(standar_deviation_pd/sqrt(16)</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Lower CI: dp_mean-t(n-1, 1-alpha/2)*(standar_deviation_dp/sqrt(16)</span></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Upper CI dp_mean+t(n-1,1-alpha/2)*(standar_deviation_dp/sqrt(16)</span></span>
 <span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>t_15 <span class="ot">&lt;-</span> <span class="fl">2.131</span> </span>
 <span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a></span>
@@ -478,9 +473,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.131</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>CI_pd_15 <span class="ot">&lt;-</span> <span class="fu">c</span>(pd_mean<span class="sc">-</span>t_15<span class="sc">*</span>(standard_deviation_pd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>)), pd_mean<span class="sc">+</span>t_15<span class="sc">*</span>(standard_deviation_pd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>)))</span>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>CI_dp_15 <span class="ot">&lt;-</span> <span class="fu">c</span>(dp_mean<span class="sc">-</span>t_15<span class="sc">*</span>(standard_deviation_dp<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>)), dp_mean<span class="sc">+</span>t_15<span class="sc">*</span>(standard_deviation_dp<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>)))</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>CI_pd_15</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>CI_dp_15</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 54.48903 58.88597</code></pre>
 </div>
@@ -488,9 +483,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the pivot</span></span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>pd_pivot <span class="ot">&lt;-</span> (pd_mean<span class="sc">-</span>pd_reference)<span class="sc">/</span>(standard_deviation_pd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>dp_pivot <span class="ot">&lt;-</span> (dp_mean<span class="sc">-</span>dp_reference)<span class="sc">/</span>(standard_deviation_dp<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
 <span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>pd_pivot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>dp_pivot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -22.59707</code></pre>
 </div>
@@ -529,8 +524,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since its a 2 sided we multiply that by 2:</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>pval_pd <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="fl">-0.998</span>)<span class="sc">*</span><span class="dv">2</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>pval_pd </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>pval_dp <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="fl">-0.998</span>)<span class="sc">*</span><span class="dv">2</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>pval_dp </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.004</code></pre>
 </div>
@@ -540,8 +535,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, observing the data, it seems like the value is smaller than 60, we want to make the hypothesis that it is less that the average value for that population: </span></span>
 <span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: pd_mean= pd_reference</span></span>
-<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="co"># H1: pd_mean&lt; pd_reference</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co"># H0: dp_mean = pd_reference</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="co"># H1: dp_mean &lt; pd_reference</span></span>
 <span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Calculating the 95% CI ----------------------------------------------------</span></span>
 <span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a></span>
@@ -552,11 +547,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Calculating the p-value-------------------------------------------------------</span></span>
 <span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a><span class="co"># p(Z&lt;-22.59)=P(z&gt; 22.59)= 1-p(Z&lt;22.59)= pval_pd</span></span>
-<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Since its a one tail, the pval is the same as pval_pd :</span></span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a><span class="co"># p(Z&lt;-22.59)=P(z&gt; 22.59)= 1-p(Z&lt;22.59)= pval_dp</span></span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Since its a one tail, the pval is the same as pval_dp :</span></span>
 <span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a>pval_one_side_pd <span class="ot">&lt;-</span> pval_pd</span>
-<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a>pval_one_side_pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a>pval_one_side_dp <span class="ot">&lt;-</span> pval_dp</span>
+<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a>pval_one_side_dp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.004</code></pre>
 </div>
@@ -565,11 +560,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting systolic and diastolic pressure together--------------------------------</span></span>
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>third_data <span class="sc">%&gt;%</span> </span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> hora))<span class="sc">+</span></span>
-<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span> ps), <span class="at">color=</span> <span class="st">"lightblue"</span>)<span class="sc">+</span></span>
-<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span> pd), <span class="at">color=</span> <span class="st">"aquamarine4"</span>)<span class="sc">+</span></span>
-<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span> ps), <span class="at">group=</span> <span class="st">"ps"</span>, <span class="at">color=</span> <span class="st">"lightblue"</span>)<span class="sc">+</span></span>
-<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span> pd), <span class="at">group=</span> <span class="st">"pd"</span>, <span class="at">color=</span> <span class="st">"aquamarine4"</span>)<span class="sc">+</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> time))<span class="sc">+</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span> sp), <span class="at">color=</span> <span class="st">"lightblue"</span>)<span class="sc">+</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span> dp), <span class="at">color=</span> <span class="st">"aquamarine4"</span>)<span class="sc">+</span></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span> sp), <span class="at">group=</span> <span class="st">"sp"</span>, <span class="at">color=</span> <span class="st">"lightblue"</span>)<span class="sc">+</span></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span> dp), <span class="at">group=</span> <span class="st">"dp"</span>, <span class="at">color=</span> <span class="st">"aquamarine4"</span>)<span class="sc">+</span></span>
 <span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">120</span>, <span class="at">color=</span> <span class="st">"cadetblue4"</span>)<span class="sc">+</span></span>
 <span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">60</span>, <span class="at">color=</span> <span class="st">"cadetblue4"</span>)<span class="sc">+</span></span>
 <span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(<span class="st">"00:30:00"</span>, <span class="st">"21:30:00"</span>),</span>
@@ -577,7 +572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">title=</span> <span class="st">"Systolic and diastolic pressure"</span>,</span>
 <span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">x=</span> <span class="st">"Time"</span>,</span>
 <span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">y=</span> <span class="st">"Pressure"</span>,</span>
-<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"lightblue represents the systolic pressure and the aquamarine4 represents the dyastolic pressure"</span>)<span class="sc">+</span></span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>             )<span class="sc">+</span></span>
 <span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
 <span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme</span>(<span class="at">axis.text.x=</span> <span class="fu">element_text</span>( <span class="at">size=</span> <span class="st">"5"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -593,42 +588,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>third_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 16 × 5
-   hora        ps    pd pulso  peso
-   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 09:30:00   104    52    52  72.6
- 2 10:30:00   109    52    58  72.6
- 3 11:30:00   100    52    50  72.9
- 4 12:30:00    98    54    47  72.7
- 5 13:30:00   103    57    44  72.2
- 6 14:30:00   102    60    45  72.1
- 7 15:30:00   112    54    44  72.8
- 8 16:30:00   111    53    47  72.9
- 9 17:30:00   120    57    49  73.1
-10 18:30:00   109    55    46  72.6
-11 19:30:00   111    58    46  73.1
-12 20:30:00   116    60    49  72.7
-13 21:30:00   112    63    44  72.4
-14 22:30:00   114    59    49  73.5
-15 23:30:00   111    55    49  73.2
-16 00:30:00   121    66    51  73.2</code></pre>
+   time        sp    dp pulse weight
+   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1 09:30:00   104    52    52   72.6
+ 2 10:30:00   109    52    58   72.6
+ 3 11:30:00   100    52    50   72.9
+ 4 12:30:00    98    54    47   72.7
+ 5 13:30:00   103    57    44   72.2
+ 6 14:30:00   102    60    45   72.1
+ 7 15:30:00   112    54    44   72.8
+ 8 16:30:00   111    53    47   72.9
+ 9 17:30:00   120    57    49   73.1
+10 18:30:00   109    55    46   72.6
+11 19:30:00   111    58    46   73.1
+12 20:30:00   116    60    49   72.7
+13 21:30:00   112    63    44   72.4
+14 22:30:00   114    59    49   73.5
+15 23:30:00   111    55    49   73.2
+16 00:30:00   121    66    51   73.2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>mean_weight <span class="ot">&lt;-</span> <span class="fu">mean</span>(third_data<span class="sc">$</span>peso)</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>mean_weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>weight_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(third_data<span class="sc">$</span>weight)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>weight_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 72.7875</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>reference_weight <span class="ot">&lt;-</span> <span class="fl">72.87</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>reference_weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>weight_reference <span class="ot">&lt;-</span> <span class="fl">72.87</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>weight_reference</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 72.87</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting  weight ----------------------------------------------------------------</span></span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>third_data <span class="sc">%&gt;%</span> </span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> hora))<span class="sc">+</span></span>
-<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span> peso),</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> time))<span class="sc">+</span></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span> weight),</span>
 <span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">color=</span> <span class="st">"deepskyblue"</span>)<span class="sc">+</span></span>
-<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span> peso),<span class="at">group=</span> <span class="st">"peso"</span>, <span class="at">color=</span> <span class="st">"deepskyblue1"</span>)<span class="sc">+</span></span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span> weight),<span class="at">group=</span> <span class="st">"weight"</span>, <span class="at">color=</span> <span class="st">"deepskyblue1"</span>)<span class="sc">+</span></span>
 <span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_hline</span>( <span class="at">yintercept=</span> <span class="fl">72.87</span>,</span>
 <span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">color=</span> <span class="st">"deepskyblue4"</span>)<span class="sc">+</span></span>
 <span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="st">"22:30:00"</span>,</span>
@@ -652,7 +647,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We dont have the population sd , therefore we are on a t-student</span></span>
 <span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>sd_weight <span class="ot">&lt;-</span> <span class="fu">sd</span>(third_data<span class="sc">$</span>peso)</span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>sd_weight <span class="ot">&lt;-</span> <span class="fu">sd</span>(third_data<span class="sc">$</span>weight)</span>
 <span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>sd_weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3792537</code></pre>
@@ -661,7 +656,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>error_weight <span class="ot">&lt;-</span> <span class="fl">2.131</span><span class="sc">*</span>(sd_weight<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
 <span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>CI_weight <span class="ot">&lt;-</span> <span class="fu">c</span>(mean_weight<span class="sc">-</span>error_weight, mean_weight<span class="sc">+</span>error_weight)</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>CI_weight <span class="ot">&lt;-</span> <span class="fu">c</span>(weight_mean<span class="sc">-</span>error_weight, weight_mean<span class="sc">+</span>error_weight)</span>
 <span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>CI_weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -671,12 +666,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co">#2. Rejection area method ---------------------------------------------------------</span></span>
 <span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  H0: mean_weight= Reference_weight</span></span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  H1: mean_weight is different than Reference_weight</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  H0: weight_mean = Reference_weight</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  H1: weight_mean is different than Reference_weight</span></span>
 <span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co">#  alpha= 0.05</span></span>
 <span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the pivot: </span></span>
 <span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>pivot_weight <span class="ot">&lt;-</span> (mean_weight<span class="sc">-</span>reference_weight)<span class="sc">/</span>(sd_weight<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>pivot_weight <span class="ot">&lt;-</span> (weight_mean<span class="sc">-</span>weight_reference)<span class="sc">/</span>(sd_weight<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">16</span>))</span>
 <span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>pivot_weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.87013</code></pre>
@@ -707,11 +702,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since the p-value is higher than alpha , we fail to reject H0, again there is not enough evidence that shows a difference between the weight of a person that  is 182 cm and works out 4 times a week and the reference ideal value of a person of that height. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="bibliography" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="bibliography"><span class="header-section-number">2</span> Bibliography</h2>
-<p><a href="https://www.cdc.gov/bloodpressure/about.htm" class="uri">https://www.cdc.gov/bloodpressure/about.htm</a></p>
-<p><a href="https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate" class="uri">https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/pulse-rate</a></p>
-<p><a href="https://www.calculators.org/health/ideal-weight.php" class="uri">https://www.calculators.org/health/ideal-weight.php</a></p>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>After analysing the systolic , diastolic and weight measurements from an individual that works out 4 times a week and comparing the results with the reference values, it was found that both the systolic and diastolic pressure were lower than the average parameters of 120 /80 mmHg of a healthy individual, however, there were no statistically significant differences between the weight and its reference value.</p>
+</section>
+<section id="bibliography" class="level2">
+<h2 class="anchored" data-anchor-id="bibliography">Bibliography</h2>
+<ol type="1">
+<li><p><em>High Blood Pressure Symptoms, Causes, and Problems | cdc.gov</em>. (2023, August 29). Centers for Disease Control and Prevention. https://www.cdc.gov/bloodpressure/about.htm</p></li>
+<li><p><em>How much should I weigh? Ideal body weight calculator for women &amp; men</em>. (n.d.). https://www.calculators.org/health/ideal-weight.php</p></li>
+</ol>
 </section>
 
 </main>
