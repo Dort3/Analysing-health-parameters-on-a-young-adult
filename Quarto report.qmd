@@ -371,8 +371,8 @@ CI_weight
 
 #2. Rejection area method ---------------------------------------------------------
 
-#  H0: weight_mean = Reference_weight
-#  H1: weight_mean is different than Reference_weight
+#  H0: weight_mean = weight_reference
+#  H1: weight_mean is different than weight_reference
 #  alpha= 0.05
 # Calculating the pivot: 
 
