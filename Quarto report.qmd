@@ -356,6 +356,7 @@ ggplot(aes(x= time))+
 #1. calculating the 95% CI, alpha= 0.05--------------------------------------------
 
 # We dont have the population sd , therefore we are on a t-student
+#The t-student value is (tn-1,1-alpha/2)= t15,1-0.05/2)=t15, 0.975= ± 2.131
 
 sd_weight <- sd(third_data$weight)
 sd_weight
@@ -378,8 +379,6 @@ CI_weight
 
 pivot_weight <- (weight_mean-weight_reference)/(sd_weight/sqrt(16))
 pivot_weight
-
-# The t-student value is (tn-1,1-alpha/2)= t15,1-0.05/2)=t15, 0.975= ± 2.131
 
 # Since our pivot or t = -0.87013, it does not fall within the rejection area, therefore we fail to reject H0, there is not enough evidence that shows a difference between the weight of a person that is 182 cm and works out 4 times a week and the reference ideal value of a person of that height. 
 
