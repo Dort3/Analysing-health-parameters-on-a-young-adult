@@ -45,11 +45,11 @@ third_data <- second_data %>%
 third_data
 
 # Plotting Systolic pressure------------------------------------------------------- 
-ps_graph <- third_data %>% 
+sp_graph <- third_data %>% 
  ggplot(aes(x= time,
             y=sp))
 
-ps_graph+
+sp_graph+
  geom_line(group= "sp",
            color= "dodgerblue")+
  geom_point(color="dodgerblue4")+
