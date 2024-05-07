@@ -34,7 +34,7 @@ raw_data <- "D:\\OneDrive - UAM\\Escritorio\\Data analysis\\R documents\\Proyect
 first_data <- read_excel(raw_data)
 first_data 
 
-# Removing a date from the variable momento_del_dia--------------------------------
+# Removing a date from the variable time------------------------------------------
 
 second_data <- separate(first_data, time, into =c("day", "time"),sep=" ")
 
