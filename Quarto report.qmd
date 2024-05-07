@@ -182,30 +182,30 @@ probability_pivot
 
 first_data
 
-pd_analysis <- first_data %>% 
+dp_analysis <- first_data %>% 
  separate_wider_delim(delim = " ",
                       cols = time,
                       names = c("day", "time")) %>% 
  select(time,dp)
 
-pd_analysis
+dp_analysis
 
-dp_mean <- mean(pd_analysis$dp)
+dp_mean <- mean(dp_analysis$dp)
 dp_mean
 
 dp_reference <- 80
 dp_reference
 
-standard_deviation_dp <- sd(pd_analysis$dp)
+standard_deviation_dp <- sd(dp_analysis$dp)
 standard_deviation_dp
 
 # Plotting  the diastolic pressure-------------------------------------------------
 
-pd_graph <- 
+dp_graph <- 
 third_data %>% 
  ggplot(aes(x= time,
             y= dp))
-pd_graph+
+dp_graph+
  geom_line(group= "dp",
            color= "aquamarine")+
  geom_point(color="aquamarine4")+
