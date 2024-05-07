@@ -60,7 +60,7 @@ sp_graph+
  theme_bw()+
  theme(axis.text.x= element_text( size= "6"))
 
-# Statistical inference of systolic pressure (ps) ---------------------------------
+# Statistical inference of systolic pressure (sp) ---------------------------------
 
 
 mean_sp <- mean(third_data$sp)
