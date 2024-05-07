@@ -282,8 +282,8 @@ pval_dp
 
 # Now, observing the data, it seems like the value is smaller than 60, we want to make the hypothesis that it is less that the average value for that population: 
 
-# H0: dp_mean = pd_reference
-# H1: dp_mean < pd_reference
+# H0: dp_mean = dp_reference
+# H1: dp_mean < dp_reference
 #
 # 1. Calculating the 95% CI ----------------------------------------------------
 
