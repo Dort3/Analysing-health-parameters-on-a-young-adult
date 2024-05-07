@@ -356,7 +356,6 @@ ggplot(aes(x= time))+
 #1. calculating the 95% CI, alpha= 0.05--------------------------------------------
 
 # We dont have the population sd , therefore we are on a t-student
-#The t-student value is (tn-1,1-alpha/2)= t15,1-0.05/2)=t15, 0.975= ± 2.131
 
 sd_weight <- sd(third_data$weight)
 sd_weight
