@@ -76,8 +76,8 @@ population_sp_mean <- 120
 # Since we have a small sample size, only 16 observations and we dont know the population standard deviation we are on a t-student distribution.
 
 # First hypothesis-----------------------------------------------------------------
-#         H0; mean_sp = population_ps_mean
-#         H1; mean_sp is different than population_ps_mean
+#         H0; mean_sp = population_sp_mean
+#         H1; mean_sp is different than population_sp_mean
 
 # 1. Calculating 95% Confidence interval (CI) -------------------------------------
 # 
