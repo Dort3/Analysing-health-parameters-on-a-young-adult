@@ -106,8 +106,8 @@ lower_CI <- mean_sp-t_student_sp*(standard_deviation_sp/sqrt(16))
 lower_CI
 upper_CI <- mean_sp+ t_student_sp*(standard_deviation_sp/sqrt(16))
 upper_CI
-CI_ps <- c(lower_CI,upper_CI)
-CI_ps
+CI_sp <- c(lower_CI,upper_CI)
+CI_sp
 
 # Since the CI does not inclue the H0 value, we can reject H0 and accept H1, the systolic pressure of this young adult that works out 4 times a week is #different than the reference value of a healthy young adult.
 
