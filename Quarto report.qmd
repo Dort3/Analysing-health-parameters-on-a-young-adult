@@ -300,7 +300,7 @@ pval_dp
 pval_one_side_dp <- 1-0.998 
 pval_one_side_dp
 
-# Since its <  alpha, which is 0.05 , the probability of having a diastolic presure of 56.6875 if H0 is true is 0.4 % , since it is so rare, H0 has to be false, and H1 is true, the probability of being wrong if we accept H1 is 0.4% , since it is #so low the chances of rejecting H0 and being wrong are extremely low, therefore we can say that H1 is true with very low probability of being wrong. 
+# Since its <  alpha, which is 0.05 , the probability of having a diastolic presure of 56.6875 if H0 is true is 0.2 % , since it is so rare, H0 has to be false, and H1 is true, the probability of being wrong if we accept H1 is 0.4% , since it is #so low the chances of rejecting H0 and being wrong are extremely low, therefore we can say that H1 is true with very low probability of being wrong. 
 
 # Plotting systolic and diastolic pressure together--------------------------------
 
