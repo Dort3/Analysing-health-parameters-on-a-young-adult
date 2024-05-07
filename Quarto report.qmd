@@ -155,7 +155,7 @@ p_value_sp
 
 # Here we are in a one tail hypothesis test, before we were looking at values above and below the mean, if H0 is false, it meant it was either higher or lower than the population mean. 
 
-# Now if H1 is true, it means that ps_mean_david is smaller than the population mean.
+# Now if H1 is true, it means that mean_sp is smaller than the population_sp_mean.
 
 # 1. Calculating 95% Confidence interval (CI) ------------------------------------- 
 # Looking at the CI calculated before, since it doesnt include H0 , we can already reject H0 and say that the systolic pressure of this young adult that exercises 4 times a week is lower than the reference systolic pressure.
