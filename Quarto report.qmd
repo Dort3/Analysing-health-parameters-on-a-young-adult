@@ -383,8 +383,8 @@ pivot_weight
 #3. calculating the p-value-------------------------------------------------------- 
 # On a t student, the probability of getting a value that is equal or less than -0.87 = the probability of getting a value higher than 0.87 and the probability of getting a value higher than 0.87 = 1-probability of getting a value smaller than   0.87 therefore: 
 
-# The probability of getting a value less than 0.87= 0.75:
-one_minus_probability_higher_than_0.87 <- 0.750
+# The probability of getting a value less than -0.87= p of getting a value higher than 0.87 , which is 1-p(t<0.87)= 1-0.75
+one_minus_probability_higher_than_0.87 <-1-0.750
 
 one_minus_probability_higher_than_0.87
 
