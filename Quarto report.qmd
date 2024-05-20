@@ -123,7 +123,7 @@ pivot
 
 #This two regions must cover 5% of the values which is the significance we are considering, the error in case we are wrong when rejecting H0:
 
-# Since its bilateral we will have halph_alpha on each side of the graph, so we will reject values that are below the quartile region of 2.5 and above 97.5, we calculate the 97.5 percentile looking at the normal table and we get a value of    1.96 on the right and - 1.96 on the left. So values that are above 1.96 or below  -1.96 will fall in the rejection region, allowing us to reject H0 and accept H1. 
+# Since its bilateral we will have halph_alpha on each side of the graph, so we will reject values that are below the quartile region of 2.5 and above 97.5, we calculate the 97.5 percentile looking at the t-student table and we get a value of 2.131 on the right and - 2.131 on the left. So values that are above 2.131 or below  -2.131 will fall in the rejection region, allowing us to reject H0 and accept H1. 
 
 # Our pivot value is : -6.21 which falls within the rejection region, therefore we reject H0 and we accept H1. 
 
@@ -164,15 +164,14 @@ p_value_sp
 # 2. Method of the rejection area ------------------------------------------------- 
 # Now to see the rejection area, since we are in a one tail, the rejection area covers all values below percentile 5
 
-# P5=P95 looking at the normal table, p95= 1.64 therefore p5=-1.64
-
+# P5=P95 looking at the t-student table for 15 degreeos of freedon and an alpha of 0.05, it is 1.753 and -1.753
 # Since our pivot = -6.21, it falls within the rejection area , therefore we reject H0 and we accept H1.
 
 # With the p-value method----------------------------------------------------------
 
 # Here we dont multiply it by 2 because we are only looking at one side of the distribution: 
 
-probability_pivot <- 1-0.9989
+probability_pivot <- 1-0.995
 probability_pivot
 
 # Now we will do the same for the diastolic pressure and the weight-----------------
@@ -256,8 +255,8 @@ halph_alpha
 
 # Checking normal distribution table
 
-p97.5 <- 1.96
-p2.5 <- -1.96
+p97.5 <- 2.131
+p2.5 <- -2.131
 
 # Since our pd_pivot -22.59 , it falls in the rejection area, therefore we reject H0 that says that this young adult that worksout 4 times a week has the same diastolic pressure as a healthy young adult and we accept H1 that the diastolic pressure of this young adult that works out 4 times a week is different than the mean reference diastolic pressure of a healthy young adult.
 
@@ -267,16 +266,16 @@ p2.5 <- -1.96
 # The probability of getting a value less than or equal to -22.59 is the same as
 # the probability of getting a value equal or higher to 22.59 therefore: 
 
-# p(Z>22.59)= 1-P(Z<22.59):
+# p(t>22.59)= 1-P(t<22.59):
 
-1-0.998 
+1-0.995 
 
 # Since its a 2 sided we multiply that by 2:
 
-pval_dp <- (1-0.998)*2
+pval_dp <- (1-0.995)*2
 pval_dp 
 
-# Since its smaller than our alhpa (0.05) we reject H0 and accept H1 that its different. 
+# Since its smaller than our alpha (0.05) we reject H0 and accept H1 that its different. 
 
 #Second hypothesis-----------------------------------------------------------------
 
