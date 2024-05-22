@@ -419,7 +419,7 @@ third_data %>%
              pressure, on the X axis the time when it was meassured. 
              The horizontal lines shows the reference value of systolic and 
              diastolic pressure, which is 120 and 60.
-             The vertical line shows the moment where the diastolic pressure was
+             The vertical lines shows the moment where the diastolic pressure was
              at its highest")+
  theme_bw()+
  theme(axis.text.x= element_text( size= "5"))
