@@ -2,7 +2,6 @@
 title: "Analysing health parameters on a young adult"
 author: "David Ortego Casado"
 format: html
-
 ---
 
 # Objective
@@ -72,16 +71,28 @@ raw_data <-
 
 first_data <- read_excel(raw_data)
 first_data 
-
-# Removing a date from the variable time----------------------------------------
+```
+## Data processing
+```{r echo= TRUE, message=FALSE, warning= FALSE}
+# In this step the data was cleaned, the date from the variable time was removed
+#  since all the measurements were taken on the same day and the variables time,
+#  sp, dp, pulse and weight were selected for the project. 
 
 second_data <- separate(first_data, time, into =c("day", "time"),sep=" ")
-
-second_data
 
 third_data <- second_data %>% 
  select(time, sp, dp, pulse, weight)
 third_data
+
+# Another method for removing the date column is as follows: 
+# 
+# This method was used when analysing the diastolic pressure.
+# 
+ third_data_2 <- first_data %>% 
+ separate_wider_delim(delim = " ",
+                      cols = time,
+                      names = c("day", "time"))
+
 ```
 
 ## Systolic pressure analysis
@@ -115,11 +126,11 @@ mean_sp
 standard_deviation_sp <- sd(third_data$sp)
 standard_deviation_sp
 
-# The population value for sistolic pressure for a young adult is 120
+# The population value for systolic pressure for a young adult is 120
 
 population_sp_mean <- 120
 
-# Since we have a small sample size, only 16 observations and we dont know 
+# Since we have a small sample size, only 16 observations and we don't know 
 # the population standard deviation we are on a t-student distribution.
 
 # First hypothesis--------------------------------------------------------------
@@ -250,17 +261,9 @@ probability_pivot
 
 ```{r echo= TRUE, message=FALSE, warning= FALSE}
 
-# This time , to clean the data and remove the date column that was imported
-# from Excel and that is wrong and not needed, we will use a different function 
-# than the one used when calculating the systolic pressure, the result is the 
-# same:
+#Here 
 
-first_data
-
-dp_analysis <- first_data %>% 
- separate_wider_delim(delim = " ",
-                      cols = time,
-                      names = c("day", "time")) %>% 
+dp_analysis <- third_data %>% 
  select(time,dp)
 
 dp_analysis
