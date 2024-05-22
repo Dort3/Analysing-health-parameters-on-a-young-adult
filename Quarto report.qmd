@@ -2,54 +2,54 @@
 title: "Analysing health parameters on a young adult"
 author: "David Ortego Casado"
 format: html
-editor: visual
+
 ---
 
 # Objective
+
+
+Blood pressure, measured in millimetres of mercury, is the pressure within the
+major arterial system of the body. It is usually separated in two types of 
+pressures, systolic pressure and diastolic pressure. Systolic pressure is the 
+maximum blood pressure during the contraction of the ventricles, while diastolic
+pressure is the minimum pressure that is detected right before the next 
+contraction, it is usually written as systolic pressure/diastolic pressure, for 
+example 120/80. These two parameters are key for the correct perfusion of the 
+organs without causing damage, an ideal blood pressure assures correct blood 
+flow to all the organs. Having a poor blood flow can lead to the organ not 
+functioning properly. Poor blood flow to the brain can cause declining mental 
+status, lethargy, somnolence and it an extreme situation even coma, poor renal 
+blood flow can cause renal failure. On the other hand, high blood blood pressure
+can cause organ damage, it can cause a heart attack, stroke, hypertensive renal 
+failure and retinopathy (1). Such is the importance of having an adequate blood 
+pressure. Weight is another key parameter for being healthy, having an excessive
+weight can lead to developing heart disease, hypertension, type 2 diabetes, 
+breathing problems and certain cancers (2) .
 
 The goal of this project is to do a comparison between some health parameters 
 (systolic pressure, diastolic pressure and weight) of one young adult that 
 exercises four times a week, versus the average parameters of a healthy young 
 adult, to practise how to program in R as well as to practise some statistical 
 concepts.
-Blood pressure, measured in millimetres of mercury, is the
-pressure within the major arterial system of the body. It is usually separated
-in two types of pressures, systolic pressure and diastolic pressure. Systolic 
-pressure is the maximum blood pressure during the contraction of the ventricles,
-while diastolic pressure is the minimum pressure that is detected right before
-the next contraction, it is usually written as systolic pressure/diastolic 
-pressure, for example 120/80. These two parameters are key for the correct
-perfusion of the organs without causing damage, an ideal blood pressure assures
-correct blood flow to all the organs. Having a poor blood flow can lead to the 
-organ not functioning properly. Poor blood flow to the brain can cause declining
-mental status, lethargy, somnolence and it an extreme situation even coma, 
-poor renal blood flow can cause renal failure. On the other hand, high blood 
-blood pressure can cause organ damage, it can cause a heart attack, stroke, 
-hypertensive renal failure and retinopathy (1). Such is the importance of having
-an adequate blood pressure.
-Weight is another key parameter for being healthy, having an excessive weight 
-can lead to developing heart disease, hypertension, type 2 diabetes, breathing
-problems and certain cancers (2) . 
-
-
 
 
 # Material and methods
 
+
 This project was the result of considering how I could improve my R programming
-skils as well as practising some basic statistics. The solution was to practise
+skils as well as practising some basic statistics. The solution was to practise 
 with a dataset, so I created my own dataset by measuring some health parameters 
 that could easily be measured at home. I took a total of 16 observations of my 
 blood pressure , my heart rate (although this variable was not used in the 
 analysis) and my weight.
 
-After having all the measures, the data was processed and later analysed. 
-After the analysis was done , a report was made with Quarto and the results of
-the project were shared in Github.
+After having all the measures, the data was processed and later analysed. After 
+the analysis was done , a report was made with Quarto and the results of the 
+project were shared in Github.
 
-The reference values of blood pressure were obtained from the Center for 
-Disease Control and Prevention (3) and the reference weight was calculated
-using Calculators.org (4). The analysis was done in R and RStudio.
+The reference values of blood pressure were obtained from the Center for Disease
+Control and Prevention (3) and the reference weight was calculated using 
+Calculators.org (4). The analysis was done in R and RStudio.
 
 # Results
 
@@ -252,7 +252,8 @@ probability_pivot
 
 # This time , to clean the data and remove the date column that was imported
 # from Excel and that is wrong and not needed, we will use a different function 
-# than the one used when calculating the systolic pressure, the result is the same:
+# than the one used when calculating the systolic pressure, the result is the 
+# same:
 
 first_data
 
@@ -419,13 +420,16 @@ third_data %>%
              pressure, on the X axis the time when it was meassured. 
              The horizontal lines shows the reference value of systolic and 
              diastolic pressure, which is 120 and 60.
-             The vertical lines shows the moment where the diastolic pressure was
-             at its highest")+
+             The vertical lines shows the moment where the diastolic pressure
+             was at its highest")+
  theme_bw()+
  theme(axis.text.x= element_text( size= "5"))
 ```
-##  Weight analysis
-```{r echo= TRUE, message=FALSE, warning= FALSE} 
+
+## Weight analysis
+
+```{r echo= TRUE, message=FALSE, warning= FALSE}
+
 # To finish the main analysis, we will see if the weight of this person that
 # works out 4 times a week is the same as the reference ideal body weight of 
 # a person that has a height of 182 cm: 
@@ -521,23 +525,24 @@ p_value_weight
 # Conclusions
 
 After analysing the systolic , diastolic and weight measurements from an 
-individual that works out 4 times a week and comparing the results with 
-the reference values, it was found that both the systolic and diastolic 
-pressure were lower than the average parameters of 120 /80 mmHg of a 
-healthy individual, however, there were no statistically significant 
-differences between the weight and its reference value.
+individual that works out 4 times a week and comparing the results with the 
+reference values, it was found that both the systolic and diastolic pressure 
+were lower than the average parameters of 120 /80 mm Hg of a healthy individual,
+however, there were no statistically significant differences between the weight 
+and its reference value.
 
 # Bibliography
+
 
 1. Brzezinski, W. A. (1990). Blood pressure. Clinical Methods - NCBI Bookshelf.
 https://www.ncbi.nlm.nih.gov/books/NBK268/
 
-2.What are overweight and obesity? | NHLBI, NIH. (2022, March 24). NHLBI, NIH.
+2. What are overweight and obesity? | NHLBI, NIH. (2022, March 24). NHLBI, NIH.
 https://www.nhlbi.nih.gov/health/overweight-and-obesity
 
-3. High Blood Pressure Symptoms, Causes, and Problems \| cdc.gov.
-(2023, August 29). Centers for Disease Control and Prevention.
-https://www.cdc.gov/bloodpressure/about.htm
+3. High Blood Pressure Symptoms, Causes, and Problems | cdc.gov. (2023, August 
+29). Centers for Disease Control and Prevention. https://www.cdc.gov/
+bloodpressure/about.htm
 
-4. How much should I weigh? Ideal body weight calculator for women & men*. 
+4. How much should I weigh? Ideal body weight calculator for women & men. 
 (n.d.). https://www.calculators.org/health/ideal-weight.php
