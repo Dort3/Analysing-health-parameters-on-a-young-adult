@@ -5,36 +5,53 @@ format: html
 editor: visual
 ---
 
-## Objective
+# Objective
 
-The goal of this project is to do a comparison between some health parameters (systolic pressure, diastolic pressure and weight) of one young adult that exercises four times a week versus the average parameters of a healthy young adult to practise how to program in R as well as to practise some statistical concepts.
+The goal of this project is to do a comparison between some health parameters 
+(systolic pressure, diastolic pressure and weight) of one young adult that 
+exercises four times a week versus the average parameters of a healthy young 
+adult to practise how to program in R as well as to practise some statistical 
+concepts.
 
-## Material and methods
+# Material and methods
 
-This project was the result of considering how I could improve my R programming skils as well as practising some basic statistics, the solution was to practise with a dataset, so I created my own dataset by measuring some health parameters that could easily be measured at home, I took a total of 16 observations of my blood pressure , my heart rate (although this variable was not used in the analysis) and my weight.
+This project was the result of considering how I could improve my R programming
+skils as well as practising some basic statistics, the solution was to practise
+with a dataset, so I created my own dataset by measuring some health parameters 
+that could easily be measured at home, I took a total of 16 observations of my 
+blood pressure , my heart rate (although this variable was not used in the 
+analysis) and my weight.
 
-After having all the measures, the data was processed and later analysed. After the analysis was done , a report was made with Quarto and the results of the project were shared in Github.
+After having all the measures, the data was processed and later analysed. 
+After the analysis was done , a report was made with Quarto and the results of
+the project were shared in Github.
 
-The reference values of blood pressure were obtained from the Center for Disease Control and Prevention (1) and the reference weight was calculated using Calculators.org (2). The analysis was done in R and RStudio.
+The reference values of blood pressure were obtained from the Center for 
+Disease Control and Prevention (1) and the reference weight was calculated
+using Calculators.org (2). The analysis was done in R and RStudio.
 
-## Results
+# Results
+
+## Loading our dataset
 
 ```{r echo= TRUE, message=FALSE, warning= FALSE}
-#Loading our dataset
+
 library(readxl)
 library(tidyverse)
-#Selecting the Excel file that contains our data-----------------------------------
+#Selecting the Excel file that contains our data--------------------------------
 
 file.choose()
 
-# We will call raw_data the file location that we got from file.choose(), we add  everything we see in the console after using the function, this path will be different than the path I use. 
+# We will call raw_data the file location that we got from file.choose(), 
+# we add  everything we see in the console after using the function, this 
+# path will be different than the path I use. 
 
 raw_data <- "D:\\OneDrive - UAM\\Escritorio\\Data analysis\\R documents\\Proyecto analisis estadistico mis parametros de salud\\Health_analysis\\Quarto_refort_definitive\\Health_parameters.xlsx"
 
 first_data <- read_excel(raw_data)
 first_data 
 
-# Removing a date from the variable time-------------------------------------------
+# Removing a date from the variable time----------------------------------------
 
 second_data <- separate(first_data, time, into =c("day", "time"),sep=" ")
 
@@ -44,7 +61,7 @@ third_data <- second_data %>%
  select(time, sp, dp, pulse, weight)
 third_data
 
-# Plotting Systolic pressure------------------------------------------------------- 
+# Plotting Systolic pressure----------------------------------------------------
 sp_graph <- third_data %>% 
  ggplot(aes(x= time,
             y=sp))
@@ -60,8 +77,7 @@ sp_graph+
  theme_bw()+
  theme(axis.text.x= element_text( size= "6"))
 
-# Statistical inference of systolic pressure (sp) ---------------------------------
-
+# Statistical inference of systolic pressure (sp) ------------------------------
 
 mean_sp <- mean(third_data$sp)
 mean_sp
@@ -73,13 +89,14 @@ standard_deviation_sp
 
 population_sp_mean <- 120
 
-# Since we have a small sample size, only 16 observations and we dont know the population standard deviation we are on a t-student distribution.
+# Since we have a small sample size, only 16 observations and we dont know 
+# the population standard deviation we are on a t-student distribution.
 
-# First hypothesis-----------------------------------------------------------------
+# First hypothesis--------------------------------------------------------------
 #         H0; mean_sp = population_sp_mean
 #         H1; mean_sp is different than population_sp_mean
 
-# 1. Calculating 95% Confidence interval (CI) -------------------------------------
+# 1. Calculating 95% Confidence interval (CI) ----------------------------------
 # 
 
 # n= 16
@@ -96,7 +113,8 @@ alpha <- 0.05
 half_alpha <- alpha/2
 percentile <- 1-half_alpha
 
-# Now lets look on the t-student distribution table for the value of n-1=16-1=15   degrees of freedom where 97.5% of the values are inferior to it: 
+# Now lets look on the t-student distribution table for the value of n-1=16-1=15
+# degrees of freedom where 97.5% of the values are inferior to it: 
 
 t_student_sp <- 2.131
 
@@ -109,9 +127,11 @@ upper_CI
 CI_sp <- c(lower_CI,upper_CI)
 CI_sp
 
-# Since the CI does not inclue the H0 value, we can reject H0 and accept H1, the systolic pressure of this young adult that works out 4 times a week is #different than the reference value of a healthy young adult.
+# Since the CI does not inclue the H0 value, we can reject H0 and accept H1, 
+# the systolic pressure of this young adult that works out 4 times a week is 
+#different than the reference value of a healthy young adult.
 
-# 2. Method of the rejection area -------------------------------------------------
+# 2. Method of the rejection area ----------------------------------------------
 # we have to calculate the pivot value: 
 
 pivot <-  (mean_sp-population_sp_mean)/(standard_deviation_sp/sqrt(16))
@@ -119,17 +139,26 @@ pivot
 
 # Delimiting rejection zone: 
 
-#Since we did a bilateral significance test, we will establish two regions , one for values much higher than 120 and one for values much lower than 120.
+#Since we did a bilateral significance test, we will establish two regions , 
+#one for values much higher than 120 and one for values much lower than 120.
 
-#This two regions must cover 5% of the values which is the significance we are considering, the error in case we are wrong when rejecting H0:
+#This two regions must cover 5% of the values which is the significance we are 
+#considering, the error in case we are wrong when rejecting H0:
 
-# Since its bilateral we will have halph_alpha on each side of the graph, so we will reject values that are below the quartile region of 2.5 and above 97.5, we calculate the 97.5 percentile looking at the t-student table and we get a value of 2.131 on the right and - 2.131 on the left. So values that are above 2.131 or below  -2.131 will fall in the rejection region, allowing us to reject H0 and accept H1. 
+# Since its bilateral we will have halph_alpha on each side of the graph, 
+# so we will reject values that are below the quartile region of 2.5 and above
+# 97.5, we calculate the 97.5 percentile looking at the t-student table and we 
+# get a value of 2.131 on the right and - 2.131 on the left. So values that are 
+# above 2.131 or below  -2.131 will fall in the rejection region, allowing us to
+# reject H0 and accept H1. 
 
-# Our pivot value is : -6.21 which falls within the rejection region, therefore we reject H0 and we accept H1. 
+# Our pivot value is : -6.21 which falls within the rejection region, therefore 
+# we reject H0 and we accept H1. 
 
-# 3. Calculating the p-value for this test-----------------------------------------
+# 3. Calculating the p-value for this test--------------------------------------
 
-# We are considering both sides of the distribution since H1 is its different than 120, which could mean either its smaller or higher than 120:
+# We are considering both sides of the distribution since H1 is its different 
+# than 120, which could mean either its smaller or higher than 120:
 
 # First we have to calculate the pivot value:
 
@@ -146,38 +175,51 @@ probability_pivot
 p_value_sp <- probability_pivot*2
 p_value_sp
 
-#Second hypothesis-----------------------------------------------------------------
+#Second hypothesis--------------------------------------------------------------
 
-# Now we know that the value is different than the reference value, we want to see if its smaller or higher, looking at the graph the data suggests that it is smaller, so we will do the next hypothesis:
+# Now we know that the value is different than the reference value, we want to 
+# see if its smaller or higher, looking at the graph the data suggests that it 
+# is smaller, so we will do the next hypothesis:
 
 # H0: mean_sp = population_sp_mean; 109.5625= 120
 # H1: mean_sp < population_sp_mean; 109.5625 < 120
 
-# Here we are in a one tail hypothesis test, before we were looking at values above and below the mean, if H0 is false, it meant it was either higher or lower than the population mean. 
+# Here we are in a one tail hypothesis test, before we were looking at values 
+# above and below the mean, if H0 is false, it meant it was either higher or 
+# lower than the population mean. 
 
-# Now if H1 is true, it means that mean_sp is smaller than the population_sp_mean.
+# Now if H1 is true, it means that mean_sp is smaller than the 
+# population_sp_mean.
 
-# 1. Calculating 95% Confidence interval (CI) ------------------------------------- 
-# Looking at the CI calculated before, since it doesnt include H0 , we can already reject H0 and say that the systolic pressure of this young adult that exercises 4 times a week is lower than the reference systolic pressure.
+# 1. Calculating 95% Confidence interval (CI) ----------------------------------
+# Looking at the CI calculated before, since it doesnt include H0 , we can 
+# already reject H0 and say that the systolic pressure of this young adult 
+# that exercises 4 times a week is lower than the reference systolic pressure.
 
 
-# 2. Method of the rejection area ------------------------------------------------- 
-# Now to see the rejection area, since we are in a one tail, the rejection area covers all values below percentile 5
+# 2. Method of the rejection area ----------------------------------------------
+# Now to see the rejection area, since we are in a one tail, the rejection area
+# covers all values below percentile 5
 
-# P5=P95 looking at the t-student table for 15 degreeos of freedon and an alpha of 0.05, it is 1.753 and -1.753
-# Since our pivot = -6.21, it falls within the rejection area , therefore we reject H0 and we accept H1.
+# P5=P95 looking at the t-student table for 15 degreeos of freedon and an alpha
+# of 0.05, it is 1.753 and -1.753
+# Since our pivot = -6.21, it falls within the rejection area , therefore we 
+# reject H0 and we accept H1.
 
-# With the p-value method----------------------------------------------------------
+# With the p-value method-------------------------------------------------------
 
-# Here we dont multiply it by 2 because we are only looking at one side of the distribution: 
+# Here we dont multiply it by 2 because we are only looking at one side of the
+# distribution: 
 
 probability_pivot <- 1-0.995
 probability_pivot
 
-# Now we will do the same for the diastolic pressure and the weight-----------------
+# Now we will do the same for the diastolic pressure and the weight-------------
 
-#Diastolic pressure comparison----------------------------------------------------- 
-#This time , to clean the data and remove the date column that was imported from Excel and that is wrong and not needed, we will use a different function than the one used when calculating the systolic pressure, the result is the same:
+#Diastolic pressure comparison--------------------------------------------------
+# This time , to clean the data and remove the date column that was imported
+# from Excel and that is wrong and not needed, we will use a different function 
+# than the one used when calculating the systolic pressure, the result is the same:
 
 first_data
 
@@ -198,7 +240,7 @@ dp_reference
 standard_deviation_dp <- sd(dp_analysis$dp)
 standard_deviation_dp
 
-# Plotting  the diastolic pressure-------------------------------------------------
+# Plotting  the diastolic pressure----------------------------------------------
 
 dp_graph <- 
 third_data %>% 
@@ -215,13 +257,13 @@ dp_graph+
  theme_bw()+
  theme(axis.text.x= element_text( size= "5"))
 
-# Statistical inference of diastolic pressure (dp) --------------------------------
+# Statistical inference of diastolic pressure (dp) -----------------------------
 
-# First hypothesis-----------------------------------------------------------------
+# First hypothesis--------------------------------------------------------------
 #         H0; dp_mean = dp_reference
 #         H1; dp_mean is different than dp_reference
 
-# 1. Calculating the 95% CI -------------------------------------------------------
+# 1. Calculating the 95% CI ----------------------------------------------------
 
 # Formula: 
 
@@ -233,11 +275,12 @@ t_15 <- 2.131
 t_15
 
 
-CI_dp_15 <- c(dp_mean-t_15*(standard_deviation_dp/sqrt(16)), dp_mean+t_15*(standard_deviation_dp/sqrt(16)))
+CI_dp_15 <- c(dp_mean-t_15*(standard_deviation_dp/sqrt(16)),
+              dp_mean+t_15*(standard_deviation_dp/sqrt(16)))
 
 CI_dp_15
 
-# 2. Rejection area method --------------------------------------------------------
+# 2. Rejection area method -----------------------------------------------------
 
 # Calculating the pivot
 
@@ -258,9 +301,14 @@ halph_alpha
 p97.5 <- 2.131
 p2.5 <- -2.131
 
-# Since our pd_pivot -22.59 , it falls in the rejection area, therefore we reject H0 that says that this young adult that worksout 4 times a week has the same diastolic pressure as a healthy young adult and we accept H1 that the diastolic pressure of this young adult that works out 4 times a week is different than the mean reference diastolic pressure of a healthy young adult.
+# Since our pd_pivot -22.59 , it falls in the rejection area, therefore we 
+# reject H0 that says that this young adult that worksout 4 times a week has
+# the same diastolic pressure as a healthy young adult and we accept H1 that
+# the diastolic pressure of this young adult that works out 4 times a week 
+# is different than the mean reference diastolic pressure of a healthy young 
+# adult.
 
-# 3. Calculating the p-value-------------------------------------------------------
+# 3. Calculating the p-value----------------------------------------------------
 
 # Now we want to see the probability of getting a pivot of -22.59 if H0 is true: 
 # The probability of getting a value less than or equal to -22.59 is the same as
@@ -275,23 +323,31 @@ p2.5 <- -2.131
 pval_dp <- (1-0.995)*2
 pval_dp 
 
-# Since its smaller than our alpha (0.05) we reject H0 and accept H1 that its different. 
+# Since its smaller than our alpha (0.05) we reject H0 and accept H1 that its 
+# different. 
 
-#Second hypothesis-----------------------------------------------------------------
+#Second hypothesis--------------------------------------------------------------
 
-# Now, observing the data, it seems like the value is smaller than 60, we want to make the hypothesis that it is less that the average value for that population: 
+# Now, observing the data, it seems like the value is smaller than 60, we want
+# to make the hypothesis that it is less that the average value for that
+# population: 
 
 # H0: dp_mean = dp_reference
 # H1: dp_mean < dp_reference
 #
 # 1. Calculating the 95% CI ----------------------------------------------------
 
-# With the CI we have already demonstrated that it is below, since it doesnt include H0.
+# With the CI we have already demonstrated that it is below, since it doesnt
+# include H0.
 
-# 2. Rejection are method---------------------------------------------------------- 
-# Since out pivot is -22.59 it falls within the rejection region we calculated before, when using the rejection method for the systolic pressure, therefore we still reject H0 and we accept H1, the diastolic pressure of this young adult that works out 4 times a week is less than the average pressure value of a healthy young adult.
+# 2. Rejection are method-------------------------------------------------------
+# Since out pivot is -22.59 it falls within the rejection region we calculated
+# before, when using the rejection method for the systolic pressure, therefore
+# we still reject H0 and we accept H1, the diastolic pressure of this young 
+# adult that works out 4 times a week is less than the average pressure value
+# of a healthy young adult.
 
-# 3. Calculating the p-value-------------------------------------------------------
+# 3. Calculating the p-value----------------------------------------------------
 
 # p(t<-22.59)=P(t> 22.59)= 1-p(t<22.59)= pval_dp
 # Since its a one tail, the pval is the same as pval_dp :
@@ -299,9 +355,14 @@ pval_dp
 pval_one_side_dp <- 1-0.995 
 pval_one_side_dp
 
-# Since its <  alpha, which is 0.05 , the probability of having a diastolic presure of 56.6875 if H0 is true is 0.2 % , since it is so rare, H0 has to be false, and H1 is true, the probability of being wrong if we accept H1 is 0.2% , since it is so low the chances of rejecting H0 and being wrong are extremely low, therefore we can say that H1 is true with very low probability of being wrong. 
+# Since its <  alpha, which is 0.05 , the probability of having a diastolic 
+# presure of 56.6875 if H0 is true is 0.2 % , since it is so rare, H0 has to
+# be false, and H1 is true, the probability of being wrong if we accept H1 
+# is 0.2% , since it is so low the chances of rejecting H0 and being wrong 
+# are extremely low, therefore we can say that H1 is true with very low 
+# probability of being wrong. 
 
-# Plotting systolic and diastolic pressure together--------------------------------
+# Plotting systolic and diastolic pressure together-----------------------------
 
 third_data %>% 
         ggplot(aes(x= time))+
@@ -320,8 +381,10 @@ third_data %>%
  theme_bw()+
  theme(axis.text.x= element_text( size= "5"))
 
-# Weight comparison---------------------------------------------------------------- 
-# To finish the main analysis, we will see if the weight of this person that works out 4 times a week is the same as the reference ideal body weight of a person that has a height of 182 cm: 
+# Weight comparison-------------------------------------------------------------
+# To finish the main analysis, we will see if the weight of this person that
+# works out 4 times a week is the same as the reference ideal body weight of 
+# a person that has a height of 182 cm: 
 
 third_data
 
@@ -331,7 +394,7 @@ weight_mean
 weight_reference <- 72.87
 weight_reference
 
-# Plotting  weight ----------------------------------------------------------------
+# Plotting  weight -------------------------------------------------------------
 
 third_data %>% 
 ggplot(aes(x= time))+
@@ -342,17 +405,19 @@ ggplot(aes(x= time))+
              color= "deepskyblue4")+
  geom_vline(xintercept="22:30:00",
             color= "red")+
- labs( title = "Weight measurements of one young adult that works out 4 times a week",
-       caption = "The vertical line shows the highest weight measurement and the horizontal line the ideal reference value",
+ labs( title = "Weight measurements of one young adult that works out 4 
+       times a week",
+       caption = "The vertical line shows the highest weight measurement
+       and the horizontal line the ideal reference value",
        x= "Time",
        y= "Weight(kg)")+
  theme_bw()+
  theme(axis.text.x= element_text( size= "5"))
 
 
-# Statistical inference of weight -------------------------------------------------
+# Statistical inference of weight ----------------------------------------------
 
-#1. calculating the 95% CI, alpha= 0.05--------------------------------------------
+#1. calculating the 95% CI, alpha= 0.05-----------------------------------------
 
 # We dont have the population sd , therefore we are on a t-student
 
@@ -366,9 +431,10 @@ CI_weight <- c(weight_mean-error_weight, weight_mean+error_weight)
 
 CI_weight
 
-# Since the confidence interval includes the reference value, with the information we have we cannot reject H0. 
+# Since the confidence interval includes the reference value, with the 
+# information we have we cannot reject H0. 
 
-#2. Rejection area method ---------------------------------------------------------
+#2. Rejection area method ------------------------------------------------------
 
 #  H0: weight_mean = weight_reference
 #  H1: weight_mean is different than weight_reference
@@ -378,12 +444,19 @@ CI_weight
 pivot_weight <- (weight_mean-weight_reference)/(sd_weight/sqrt(16))
 pivot_weight
 
-# Since our pivot or t = -0.87013, it does not fall within the rejection area, therefore we fail to reject H0, there is not enough evidence that shows a difference between the weight of a person that is 182 cm and works out 4 times a week and the reference ideal value of a person of that height. 
+# Since our pivot or t = -0.87013, it does not fall within the rejection area,
+# therefore we fail to reject H0, there is not enough evidence that shows a 
+# difference between the weight of a person that is 182 cm and works out 4 
+# times a week and the reference ideal value of a person of that height. 
 
-#3. calculating the p-value-------------------------------------------------------- 
-# On a t student, the probability of getting a value that is equal or less than -0.87 = the probability of getting a value higher than 0.87 and the probability of getting a value higher than 0.87 = 1-probability of getting a value smaller than   0.87 therefore: 
+#3. calculating the p-value-----------------------------------------------------
+# On a t student, the probability of getting a value that is equal or less than
+# -0.87 = the probability of getting a value higher than 0.87 and the 
+# probability of getting a value higher than 0.87 = 1-probability of getting a 
+# value smaller than   0.87 therefore: 
 
-# The probability of getting a value less than -0.87= p of getting a value higher than 0.87 , which is 1-p(t<0.87)= 1-0.75
+# The probability of getting a value less than -0.87= p of getting a value
+# higher than 0.87 , which is 1-p(t<0.87)= 1-0.75
 one_minus_probability_higher_than_0.87 <-1-0.750
 
 one_minus_probability_higher_than_0.87
@@ -393,15 +466,26 @@ one_minus_probability_higher_than_0.87
 p_value_weight <- 2*one_minus_probability_higher_than_0.87
 p_value_weight
 
-# Since the p-value is higher than alpha , we fail to reject H0, again there is not enough evidence that shows a difference between the weight of a person that  is 182 cm and works out 4 times a week and the reference ideal value of a person of that height. 
+# Since the p-value is higher than alpha , we fail to reject H0, again there is
+# not enough evidence that shows a difference between the weight of a person 
+# that  is 182 cm and works out 4 times a week and the reference ideal value 
+# of a person of that height. 
 ```
 
 ## Conclusions
 
-After analysing the systolic , diastolic and weight measurements from an individual that works out 4 times a week and comparing the results with the reference values, it was found that both the systolic and diastolic pressure were lower than the average parameters of 120 /80 mmHg of a healthy individual, however, there were no statistically significant differences between the weight and its reference value.
+After analysing the systolic , diastolic and weight measurements from an 
+individual that works out 4 times a week and comparing the results with 
+the reference values, it was found that both the systolic and diastolic 
+pressure were lower than the average parameters of 120 /80 mmHg of a 
+healthy individual, however, there were no statistically significant 
+differences between the weight and its reference value.
 
 ## Bibliography
 
-1.  *High Blood Pressure Symptoms, Causes, and Problems \| cdc.gov*. (2023, August 29). Centers for Disease Control and Prevention. https://www.cdc.gov/bloodpressure/about.htm
+1.  *High Blood Pressure Symptoms, Causes, and Problems \| cdc.gov*.
+(2023, August 29). Centers for Disease Control and Prevention.
+https://www.cdc.gov/bloodpressure/about.htm
 
-2.  *How much should I weigh? Ideal body weight calculator for women & men*. (n.d.). https://www.calculators.org/health/ideal-weight.php
+2.  *How much should I weigh? Ideal body weight calculator for women & men*. 
+(n.d.). https://www.calculators.org/health/ideal-weight.php
