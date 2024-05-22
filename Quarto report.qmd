@@ -89,7 +89,8 @@ third_data
  third_data_2 <- first_data %>% 
  separate_wider_delim(delim = " ",
                       cols = time,
-                      names = c("day", "time"))
+                      names = c("day", "time") %>% 
+                       select(time, sp, dp, pulse, weight))
 
  third_data_2
 ```
