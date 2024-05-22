@@ -82,7 +82,6 @@ third_data
 ```
 
 ## Systolic pressure analysis
-Systolic pressure 
 
 ```{r echo= TRUE, message=FALSE, warning= FALSE}
 # Plotting Systolic pressure----------------------------------------------------
@@ -238,9 +237,12 @@ p_value_sp
 probability_pivot <- 1-0.995
 probability_pivot
 
-# Now we will do the same for the diastolic pressure and the weight-------------
+```
 
-#Diastolic pressure comparison--------------------------------------------------
+## Diastolic pressure analysis
+
+```{r echo= TRUE, message=FALSE, warning= FALSE}
+
 # This time , to clean the data and remove the date column that was imported
 # from Excel and that is wrong and not needed, we will use a different function 
 # than the one used when calculating the systolic pressure, the result is the same:
@@ -404,8 +406,9 @@ third_data %>%
              )+
  theme_bw()+
  theme(axis.text.x= element_text( size= "5"))
-
-# Weight comparison-------------------------------------------------------------
+```
+##  Weight analysis
+```{r echo= TRUE, message=FALSE, warning= FALSE} 
 # To finish the main analysis, we will see if the weight of this person that
 # works out 4 times a week is the same as the reference ideal body weight of 
 # a person that has a height of 182 cm: 
@@ -496,7 +499,7 @@ p_value_weight
 # of a person of that height. 
 ```
 
-## Conclusions
+# Conclusions
 
 After analysing the systolic , diastolic and weight measurements from an 
 individual that works out 4 times a week and comparing the results with 
@@ -505,7 +508,7 @@ pressure were lower than the average parameters of 120 /80 mmHg of a
 healthy individual, however, there were no statistically significant 
 differences between the weight and its reference value.
 
-## Bibliography
+# Bibliography
 
 1. Brzezinski, W. A. (1990). Blood pressure. Clinical Methods - NCBI Bookshelf.
 https://www.ncbi.nlm.nih.gov/books/NBK268/
