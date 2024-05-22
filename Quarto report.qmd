@@ -85,14 +85,13 @@ third_data <- second_data %>%
 third_data
 
 # Another method for removing the date column is as follows: 
-# 
-# This method was used when analysing the diastolic pressure.
-# 
+ 
  third_data_2 <- first_data %>% 
  separate_wider_delim(delim = " ",
                       cols = time,
                       names = c("day", "time"))
 
+ third_data_2
 ```
 
 ## Systolic pressure analysis
