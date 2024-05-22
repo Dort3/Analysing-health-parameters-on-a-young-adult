@@ -12,6 +12,24 @@ The goal of this project is to do a comparison between some health parameters
 exercises four times a week versus the average parameters of a healthy young 
 adult to practise how to program in R as well as to practise some statistical 
 concepts.
+Blood pressure is measured in millimetres of mercury and is the
+pressure within the major arterial system of the body. It is usually separated
+in two types of pressures, systolic pressure and diastolic pressure. Systolic 
+pressure is the maximum blood pressure during the contraction of the ventricles,
+while diastolic pressure is the minimum pressure that is detected right before
+the next contraction, it is usually written as systolic pressure/diastolic 
+pressure, for example 120/80. These two parameters are key for the correct
+perfusion of the organs without causing damage, an ideal blood pressure assures
+correct blood flow to all the organs. Having a poor blood flow can lead to the 
+organ not functioning properly. Poor blood flow to the brain can cause declining
+mental status, lethargy, somnolence and it an extreme situation even coma and 
+poor renal blood flow can cause renal failure. On the other hand,high blood 
+blood pressure can cause organ damage, for example, it can cause a heart attack,
+stroke, hypertensive renal failure and retinopathy (1). Such is the importance 
+of having an adecuate blood pressure.
+
+
+
 
 # Material and methods
 
@@ -46,7 +64,8 @@ file.choose()
 # we add  everything we see in the console after using the function, this 
 # path will be different than the path I use. 
 
-raw_data <- "D:\\OneDrive - UAM\\Escritorio\\Data analysis\\R documents\\Proyecto analisis estadistico mis parametros de salud\\Health_analysis\\Quarto_refort_definitive\\Health_parameters.xlsx"
+raw_data <- 
+"D:\\OneDrive - UAM\\Escritorio\\Data analysis\\R documents\\Proyecto analisis estadistico mis parametros de salud\\Health_analysis\\Quarto_refort_definitive\\Health_parameters.xlsx"
 
 first_data <- read_excel(raw_data)
 first_data 
@@ -60,7 +79,12 @@ second_data
 third_data <- second_data %>% 
  select(time, sp, dp, pulse, weight)
 third_data
+```
 
+## Systolic pressure analysis
+Systolic pressure 
+
+```{r echo= TRUE, message=FALSE, warning= FALSE}
 # Plotting Systolic pressure----------------------------------------------------
 sp_graph <- third_data %>% 
  ggplot(aes(x= time,
@@ -483,9 +507,12 @@ differences between the weight and its reference value.
 
 ## Bibliography
 
-1.  *High Blood Pressure Symptoms, Causes, and Problems \| cdc.gov*.
+1. Brzezinski, W. A. (1990). Blood pressure. Clinical Methods - NCBI Bookshelf.
+https://www.ncbi.nlm.nih.gov/books/NBK268/
+
+2. High Blood Pressure Symptoms, Causes, and Problems \| cdc.gov.
 (2023, August 29). Centers for Disease Control and Prevention.
 https://www.cdc.gov/bloodpressure/about.htm
 
-2.  *How much should I weigh? Ideal body weight calculator for women & men*. 
+3. How much should I weigh? Ideal body weight calculator for women & men*. 
 (n.d.). https://www.calculators.org/health/ideal-weight.php
