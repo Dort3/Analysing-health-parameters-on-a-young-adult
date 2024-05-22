@@ -337,7 +337,7 @@ halph_alpha
 
 1-halph_alpha
 
-# Checking normal distribution table
+# Checking t-student distribution table
 
 p97.5 <- 2.131
 p2.5 <- -2.131
